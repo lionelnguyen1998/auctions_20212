@@ -1,0 +1,117 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T5]{fontenc}%Sử dụng tiếng Việt
+\usepackage[fontsize=12pt]{scrextend}%Set fontsize
+\usepackage[paperheight=19.7cm,paperwidth=21cm,right=2cm,left=3cm,top=2cm,bottom=2.5cm]{geometry}%Chuẩn A4, căn lề phải, trái, trên, dưới
+\usepackage{mathptmx}%Time New Roman
+\usepackage{graphicx}%Thư viện chèn ảnh
+\usepackage{float}%Set vị trí chèn ảnh
+\usepackage{tikz}%Thư viện tạo khung hình
+\usepackage{calc}%Thư viện tikz
+\usepackage{indentfirst} %thư viện thụt đầu dòng
+\renewcommand{\baselinestretch}{1.2}%giãn dòng 1.2
+\setlength{\parskip}{6pt}%Setting after
+\setlength{\parindent}{1cm} %set khoảng cách thụt đầu dòng mỗi đoạn
+\usepackage{titlesec}%Thư viện setup các kiểu chữ
+%titlespacing khoảng cách, titleformat format của nó
+\titlespacing*{\section}{0pt}{0pt}{30pt}%Heading 1
+\titleformat*{\section}{\fontsize{16pt}{0pt}\selectfont \bfseries \centering}
+
+\titlespacing*{\subsection}{0pt}{10pt}{0pt}%Heading 2
+\titleformat*{\subsection}{\fontsize{14pt}{0pt}\selectfont \bfseries}
+
+\titlespacing*{\subsubsection}{0pt}{10pt}{0pt}%Heading 3
+\titleformat*{\subsubsection}{\fontsize{13pt}{0pt}\selectfont \bfseries \itshape}
+
+\titlespacing*{\paragraph}{0pt}{10pt}{0pt}%Heading 4
+\titleformat*{\paragraph}{\fontsize{12pt}{0pt}\selectfont \itshape} %in nghiêng itshape
+
+%file world là bản chuẩn, nên vào đó để xem nên set như thế nào
+\begin{document}
+\cleardoublepage
+\thispagestyle{empty}
+\begin{center}
+\textbf{\fontsize{15pt}{0pt}\selectfont TRƯỜNG ĐẠI HỌC BÁCH KHOA HÀ NỘI}\\
+\vspace{2.5cm}%Khoảng cách so với bên trên
+%textbf in đậm
+%\\ là xuống dòng
+\textbf{\fontsize{25pt}{0pt}\selectfont ĐỒ ÁN TỐT NGHIỆP}\\
+\hspace{10pt}\\
+\textbf{\fontsize{23pt}{0pt}\selectfont Phần mềm đấu giá trực tuyến }  \vspace{1cm}\\
+\textbf{\fontsize{14pt}{0pt}\selectfont NGUYỄN THỊ TRÀ }  \vspace{6pt}\\
+\fontsize{13pt}{0pt}\selectfont tra.nt164200@sis.hust.edu.vn  \vspace{6pt}\\
+\textbf{\fontsize{14pt}{0pt}\selectfont Chuyên ngành Kỹ thuật phần mềm }\vspace{8pt}\\
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l l l}
+     \textbf{\fontsize{13pt}{0pt}\selectfont Giảng viên hướng dẫn:}& \fontsize{13pt}{0pt}\selectfont ThS.Nguyễn Tiến Thành \vspace{6pt}\\
+     \textbf{\fontsize{13pt}{0pt}\selectfont Bộ môn:}& \fontsize{13pt}{0pt}\selectfont Kỹ thuật phần mềm \vspace{6pt}\\
+      \textbf{\fontsize{13pt}{0pt}\selectfont Trường:}& \fontsize{13pt}{0pt}\selectfont Công nghệ Thông tin - Truyền thông
+    \end{tabular}
+\end{table}
+\vspace{2.5cm}
+\textbf{\fontsize{13pt}{0pt}\selectfont HÀ NỘI, 6/2022 }
+\end{center}
+\cleardoublepage
+\section*{LỜI CAM KẾT}
+\begin{table}[H]
+    \begin{tabular}{l l l}
+     \fontsize{13pt}{0pt}\selectfont Họ và tên sinh viên:& \fontsize{13pt}{0pt}\selectfont Nguyễn Thị Trà \vspace{6pt}\\
+     \fontsize{13pt}{0pt}\selectfont Điện thoại liên lạc: 0332741666& \fontsize{13pt}{0pt}\selectfont Email:tra.nt164200@sis.hust.edu.vn \vspace{6pt}\\
+     \fontsize{13pt}{0pt}\selectfont Lớp:CNTT02.03-K61& \fontsize{13pt}{0pt}\selectfont Hệ đào tạo: Kỹ sư chính quy
+    \end{tabular}
+\end{table}
+Tôi – Nguyễn Thị Trà – cam kết Đồ án Tốt nghiệp (ĐATN) là công trình nghiên cứu của bản thân tôi dưới sự hướng dẫn của ThS. Nguyễn Tiến Thành. Các kết quả nêu trong ĐATN là trung thực, là thành quả của riêng tôi, không sao chép theo bất kỳ công trình nào khác. Tất cả những tham khảo trong ĐATN – bao gồm hình ảnh, bảng biểu, số liệu, và các câu từ trích dẫn – đều được ghi rõ ràng và đầy đủ nguồn gốc trong danh mục tài liệu tham khảo. Tôi xin hoàn toàn chịu trách nhiệm với dù chỉ một sao chép vi phạm quy chế của nhà trường.
+\vspace{6pt}					
+\hspace{7cm} Hà Nội, ngày    tháng    năm\\
+
+\hspace{6.5cm} {Tác giả ĐATN}\\
+
+
+\hspace{6.3cm} Họ và tên sinh viên\\
+
+\hspace{6.5cm} Nguyễn Thị Trà
+
+
+\thispagestyle{empty}
+\section*{LỜI CẢM ƠN}
+\thispagestyle{empty}
+Lời đầu tiên, Con cảm ơn Bố Mẹ, cảm ơn những người Anh Chị đã luôn yêu thương con hết lòng. Lúc mà con mệt mỏi nhất, bế tắc nhất, nơi con vẫn muốn tìm về là Gia đình, để con được xoa dịu tâm hồn đầy vết xước, tìm sự lắng nghe, chia sẻ để vững vàng bước tiếp trên con đường phía trước. Cuộc đời này dù là cả ngàn con sóng, thì chưa bao giờ con có ý định từ bỏ, hay chấp nhận buông tay. Vì con có một Gia đình luôn yêu thương, bên cạnh con vô điều kiện.
+\cleardoublepage
+
+\addtocontents{toc}{\protect\thispagestyle{empty}}
+\tableofcontents %Tạo mục lục tự động
+\thispagestyle{empty}
+\cleardoublepage
+
+\pagenumbering{roman}%Đánh số theo thứ tự la mã
+\section*{DANH MỤC KÝ HIỆU VÀ CHỮ VIẾT TẮT}
+\addcontentsline{toc}{section}{\numberline {} DANH MỤC KÝ HIỆU VÀ CHỮ VIẾT TẮT}%Thêm vào mục lục
+\cleardoublepage
+
+\listoffigures %Tạo danh mục hình vẽ tự động
+\addcontentsline{toc}{section}{\numberline {} DANH MỤC HÌNH VẼ}
+\cleardoublepage
+
+\listoftables %Tạo danh mục bảng biểu tự động
+\addcontentsline{toc}{section}{\numberline {} DANH MỤC BẢNG BIỂU}
+\cleardoublepage
+
+\section*{TÓM TẮT ĐỒ ÁN}
+\addcontentsline{toc}{section}{\numberline {} TÓM TẮT ĐỒ ÁN}
+\paragraph{
+Hiện nay nhu cầu mua bán đồ cũ, mua lại các đồ đã qua sử dụng với giá rẻ hơn thị trường ngày càng tăng nhanh. Người bán thì muốn kiếm thêm một khoản từ những đồ dùng mà mình không dùng đến hay không phù hợp với nhu cầu sử dụng của mình mặc dù vừa mới mua, còn người mua thì muốn mua được đồ vẫn có thể sử dụng tốt, phù hợp với nhu cầu sử dụng của mình với giá rẻ hơn.}
+\paragraph{
+Nhằm đáp ứng nhu cầu này cho người dùng thì trên internet có nhiều website tổ chức các buổi đấu giá trực tuyến để người dùng có thể trao đổi, mua bán các sản phẩm như ebay.vn, sohot.vn….Tuy nhiên ebay phổ biến trên thế giới, nhưng không được phổ biến ở Việt Nam, chỉ dùng tiếng Anh và các ngôn ngữ khác. Việc thanh toán và vận chuyển về Việt Nam cũng rất khó khăn vì khoảng cách quá xa. Còn sohot.vn thì chủ yếu là đồ dùng nội thất, mặt hàng không đa dạng, giao diện cũng không được thân thiện với người dùng hiện nay. }
+\paragraph{
+Vì vậy để đáp ứng mục đích tạo môi trường cho người mua và người bán có thể trao đổi, mua bán những sản phẩm không dùng đến hay đã qua sử dụng một cách nhanh chóng, tiện lợi, có thể tham gia ở mọi lúc mọi nơi một cách dễ dàng hơn, phù hợp với người dùng Việt Nam hơn. Đặc biệt để tăng thêm một chút hứng thú trong việc mua hàng và mua được với giá mà mình mong muốn, chính mình trả giá cho sản phẩm đó.  Chính vì vậy ở đồ án tốt nghiệp này em đã quyết định xây dựng một trang website tổ chức đấu giá trực tuyến, nơi mà mọi người có thể mua, bán sản phẩm với giá rẻ hơn.}
+\paragraph{
+Ngoài ra hiện tại số lượng du học sinh, thực tập sinh, kỹ sư Việt Nam học tập và làm việc ở Nhật Bản cũng rất nhiều. Đặc biệt ở Nhật Bản vì vật giá cực kỳ đắt đỏ nên việc trao đổi, mua bán hàng hóa với giá rẻ hơn, phù hợp với nhu cầu người dùng rất được ưa chuộng. Để đáp ứng thêm một số lượng người dùng ở Nhật Bản, em cũng hướng tới một website có thể được dùng ở cả Việt Nam và Nhật Bản.
+}
+\cleardoublepage
+
+\pagenumbering{arabic} %Đánh số theo thứ tự 1,2,3 ....
+\section*{CHƯƠNG 1. CHƯƠNG MỞ ĐẦU}
+\addcontentsline{toc}{section}{\numberline{}CHƯƠNG 1. MỞ ĐẦU}
+Phần mở đầu giới thiệu vấn đề cần giải quyết, mô tả được các phương pháp hiện có để giải quyết vấn đề, trình bày mục đích của đồ án sóng song với việc giới hạn phạm vi của vấn đề đồ án sẽ tập trung giải quyết.
+\end{document}
