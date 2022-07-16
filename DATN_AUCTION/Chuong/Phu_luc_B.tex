@@ -1,0 +1,1095 @@
+\documentclass[../DoAn.tex]{subfiles}
+\begin{document}
+Do đồ án không đủ không gian để trình bày chi tiết các API được sử dụng trong website đấu giá trực tuyến, nên phần này em sẽ mô tả chi tiết API. 
+
+%\begin{table}[H]
+    %\centering
+    \tablehead{%
+    \hline
+    \bfseries Code & \bfseries Message & \bfseries Lưu ý  \\\hline}
+    \tabletail{\hline}
+    \topcaption{Mã response}
+    \label{banga1}
+    \begin{supertabular}{| p{.10\textwidth} | p{.30\textwidth} | p{.50\textwidth} |} 
+    \hline
+        1000 & OK & Thành công\\\hline
+        1001 &  & Lỗi khi validate\\\hline
+             & 7000 & Yêu cầu nhập \\\cline{2-3}
+             & 7001 & Tối đa 255 ký tự \\\cline{2-3}
+             & 7002 & Email không đúng định dạng \\\cline{2-3}
+             & 7003 & Mật khẩu không trùng khớp\\\cline{2-3}
+             & 7004 & Email này đã tồn tại\\\cline{2-3}
+             & 7005 & Tiêu đề phiên đấu giá đã tồn tại \\\cline{2-3}
+             & 7006 & Hãy nhập số \\\cline{2-3}
+             & 7007 & Không tồn tại giá trị \\\cline{2-3}
+             & 7008 & Ngày tháng không đúng định dạng\\\cline{2-3}
+             & 7009 & Thời gian bắt đầu sớm nhất từ ngày mai\\\cline{2-3}
+             & 7010 & Thời gian kết thúc phải sau thời gian bắt đầu\\\cline{2-3}
+             & 7011 & Tối đa 10 ký tự \\\cline{2-3}
+             & 7012 & Số series này đã tồn tại\\\cline{2-3}
+             & 7013 & Tối đa 60 ký tự\\\cline{2-3}
+             & 7014 & Bạn phải đưa ra giá cao hơn mức giá cao nhất hiện tại\\\hline
+        1002 & Mật khẩu hoặc email không đúng & \\\hline
+        1004 & Tài khoản chưa đăng nhập & \\\hline
+        1005 & Không thể chỉnh sửa & \\\hline
+        1006 & Không có quyền & \\\hline
+        1007 & Chỉ được thêm tối đa 4 ảnh & \\\hline
+        1008 & Phiên đấu giá chưa được phê duyệt & \\\hline
+        1009 & Phiên đấu giá chưa kết thúc & \\\hline
+        1010 & Đã bán & \\\hline
+        1011 & Chưa có trả giá nào & \\\hline
+        9998 & Không tìm thấy kết quả & \\\hline
+        9997 & Mật khẩu không đúng & \\\hline
+        9996 & ID truyền vào không tồn tại & \\\hline
+        9995 & Không thể thêm mới sản phẩm & \\\hline
+        9994 & Không thể xóa & \\\hline
+    \end{supertabular}
+%\end{table}
+\\
+
+Đăng nhập tài khoản
+%\begin{table}[H]
+    %\centering
+    \tablehead{%
+    \hline
+    \bfseries STT & \multicolumn{3}{c|}{\bfseries Tên biến}& \bfseries Kiểu dữ liệu &\bfseries NN &\bfseries Lưu ý\\\hline}
+    \tabletail{\hline}
+    \topcaption{api\_login}
+    \label{banga2}
+    \begin{supertabular}{| p{.05\textwidth} | p{.10\textwidth}| p{.10\textwidth} | p{.10\textwidth} |p{.10\textwidth} | p{.05\textwidth}| p{.29\textwidth} |  } 
+    \hline
+    \multicolumn{7}{|c|}{\bfseries Input}\\\hline
+    1  & \multicolumn{3}{c|}{email}& string & 0 & Email\\\hline
+    2  & \multicolumn{3}{c|}{password}& string & 0 & Mật khẩu\\\hline
+    \multicolumn{7}{|c|}{\bfseries Output}\\\hline
+    1  & \multicolumn{3}{c|}{code}& int &  & Mã response\\\hline
+    2  & \multicolumn{3}{c|}{message}& string &  & \\\hline
+    3  & data & & & object &  & Thông tin tài khoản đăng nhập\\\cline{1-1}\cline{3-7}
+    4  & \multirow{10}{*}{}    & \multicolumn{2}{c|}{access\_token}& string &  & Token\\\cline{1-1}\cline{3-7}
+    5  &      & \multicolumn{2}{c|}{token\_type}& string &  & Loại token\\\cline{1-1}\cline{3-7}
+    6  &      & \multicolumn{2}{c|}{expires\_in}& string &  & Thời gian tồn tại của Token\\\cline{1-1}\cline{3-7}
+    7  &      & user & & object &  & Thông tin tài khoản\\\cline{1-1}\cline{4-7}
+    8  &      & \multirow{6}{*}{}      & name & string &  & Tên người dùng\\\cline{1-1}\cline{4-7}
+    9  &      &      & role & string &  & Vai trò người dùng (1.admin, 2.user)\\\cline{1-1}\cline{4-7}
+    10 &      &      & avatar & string &  & Hình nền\\\cline{1-1}\cline{4-7}
+    11 &      &      & email & string &  & Địa chỉ email\\\cline{1-1}\cline{4-7}
+    12 &      &      & address & string &  & Địa chỉ\\\cline{1-1}\cline{4-7}
+    13 &      &      & phone & string &  & Số điện thoại\\\cline{1-1}\cline{4-7}
+    \end{supertabular}
+%\end{table}
+\\
+
+Đăng ký tài khoản
+%\begin{table}[H]
+    %\centering
+    \tablehead{%
+    \hline
+    \bfseries STT & \multicolumn{3}{c|}{\bfseries Tên biến}& \bfseries Kiểu dữ liệu &\bfseries NN &\bfseries Lưu ý\\\hline}
+    \tabletail{\hline}
+    \topcaption{api\_signup}
+    \label{banga3}
+    \begin{supertabular}{| p{.05\textwidth} | p{.10\textwidth}| p{.10\textwidth} | p{.10\textwidth} |p{.10\textwidth} | p{.05\textwidth}| p{.29\textwidth} |  } 
+    \hline
+    \multicolumn{7}{|c|}{\bfseries Input}\\\hline
+    1  & \multicolumn{3}{c|}{email}& string & 0 & Email\\\hline
+    2  & \multicolumn{3}{c|}{password}& string & 0 & Mật khẩu\\\hline
+    3  & \multicolumn{3}{c|}{re\_pass}& string & 0 & Xác minh lại mật khẩu\\\hline
+    4  & \multicolumn{3}{c|}{address}& string & x & Địa chỉ\\\hline
+    5  & \multicolumn{3}{c|}{name}& string & 0 & Tên\\\hline
+    6  & \multicolumn{3}{c|}{phone}& string & 0 & Số điện thoại\\\hline
+    7  & \multicolumn{3}{c|}{avatar}& string & x & Avatar\\\hline
+    \multicolumn{7}{|c|}{\bfseries Output}\\\hline
+    1  & \multicolumn{3}{c|}{code}& int &  & Mã response\\\hline
+    2  & \multicolumn{3}{c|}{message}& string &  & \\\hline
+    3  & data & & & object &  & Thông tin tài khoản đăng ký\\\cline{1-1}\cline{3-7}
+    4  & \multirow{10}{*}{}    & \multicolumn{2}{c|}{name}& string &  & Tên\\\cline{1-1}\cline{3-7}
+    5  &   & \multicolumn{2}{c|}{email}& string &  & Địa chỉ email\\\cline{1-1}\cline{3-7}
+    6  &   & \multicolumn{2}{c|}{phone}& string &  & Số điện thoại\\\cline{1-1}\cline{3-7}
+    7  &   & \multicolumn{2}{c|}{address}& string &  & Địa chỉ\\\cline{1-1}\cline{3-7}
+    8  &   & \multicolumn{2}{c|}{avatar}& string &  & Avatar\\\cline{1-1}\cline{3-7}
+    9  &   & \multicolumn{2}{c|}{role}& string &  & Vai trò\\\cline{1-1}\cline{3-7}
+    \end{supertabular}
+%\end{table}
+\\
+
+Chỉnh sửa tài khoản
+%\begin{table}[H]
+    %\centering
+    \tablehead{%
+    \hline
+    \bfseries STT & \multicolumn{3}{c|}{\bfseries Tên biến}& \bfseries Kiểu dữ liệu &\bfseries NN &\bfseries Lưu ý\\\hline}
+    \tabletail{\hline}
+    \topcaption{api\_edit\_account}
+    \label{banga4}
+    \begin{supertabular}{| p{.05\textwidth} | p{.10\textwidth}| p{.10\textwidth} | p{.10\textwidth} |p{.10\textwidth} | p{.05\textwidth}| p{.29\textwidth} |  } 
+    \hline
+    \multicolumn{7}{|c|}{\bfseries Input}\\\hline
+    1  & \multicolumn{3}{c|}{access\_token}& string & 0 & Token đăng nhập\\\hline
+    2  & \multicolumn{3}{c|}{email}& string & 0 & Email\\\hline
+    3  & \multicolumn{3}{c|}{address}& string & x & Địa chỉ\\\hline
+    4  & \multicolumn{3}{c|}{name}& string & 0 & Tên\\\hline
+    5  & \multicolumn{3}{c|}{phone}& string & 0 & Số điện thoại\\\hline
+    6  & \multicolumn{3}{c|}{avatar}& string & x & Avatar\\\hline
+    \multicolumn{7}{|c|}{\bfseries Output}\\\hline
+    1  & \multicolumn{3}{c|}{code}& int &  & Mã response\\\hline
+    2  & \multicolumn{3}{c|}{message}& string &  & \\\hline
+    3  & data & & & object &  & Thông tin tài khoản chỉnh sửa\\\cline{1-1}\cline{3-7}
+    4  & \multirow{10}{*}{}    & \multicolumn{2}{c|}{name}& string &  & Tên\\\cline{1-1}\cline{3-7}
+    5  &   & \multicolumn{2}{c|}{email}& string &  & Địa chỉ email\\\cline{1-1}\cline{3-7}
+    6  &   & \multicolumn{2}{c|}{phone}& string &  & Số điện thoại\\\cline{1-1}\cline{3-7}
+    7  &   & \multicolumn{2}{c|}{address}& string &  & Địa chỉ\\\cline{1-1}\cline{3-7}
+    8  &   & \multicolumn{2}{c|}{avatar}& string &  & Avatar\\\cline{1-1}\cline{3-7}
+    9  &   & \multicolumn{2}{c|}{role}& string &  & Vai trò\\\cline{1-1}\cline{3-7}
+    \end{supertabular}
+%\end{table}
+\\
+%\begin{table}[H]
+    %\centering
+    \tablehead{%
+    \hline
+    \bfseries STT & \bfseries Tên biến& \bfseries Kiểu dữ liệu &\bfseries NN &\bfseries Lưu ý\\\hline}
+    \tabletail{\hline}
+    \topcaption{api\_change\_password}
+    \label{banga5}
+    \begin{supertabular}{| p{.05\textwidth} | p{.36\textwidth} |p{.10\textwidth} | p{.05\textwidth}| p{.29\textwidth} |  } 
+    \hline
+    \multicolumn{5}{|c|}{\bfseries Input}\\\hline
+    1  & access\_token& string & 0 & Token đăng nhập\\\hline
+    2  & old\_pass& string & 0 & Mật khẩu cũ\\\hline
+    3  & new\_pass& string & 0 & Mật khẩu mới\\\hline
+    4  & re\_pass& string & x & Xác minh lại mật khẩu\\\hline
+    \multicolumn{5}{|c|}{\bfseries Output}\\\hline
+    1  & code& int &  & Mã response\\\hline
+    2  & message& string &  & Message thông báo đã đổi mật khẩu\\\hline
+    3  & data& null &  & \\\hline
+    \end{supertabular}
+%\end{table}
+\\
+%\begin{table}[H]
+    %\centering
+    \tablehead{%
+    \hline
+    \bfseries STT & \bfseries Tên biến& \bfseries Kiểu dữ liệu &\bfseries NN &\bfseries Lưu ý\\\hline}
+    \tabletail{\hline}
+    \topcaption{api\_log\_out}
+    \label{banga6}
+    \begin{supertabular}{| p{.05\textwidth} | p{.36\textwidth} |p{.10\textwidth} | p{.05\textwidth}| p{.29\textwidth} |  } 
+    \hline
+    \multicolumn{5}{|c|}{\bfseries Input}\\\hline
+    1  & access\_token& string & 0 & Token đăng nhập\\\hline
+    \multicolumn{5}{|c|}{\bfseries Output}\\\hline
+    1  & code& int &  & Mã response\\\hline
+    2  & message& string &  & OK\\\hline
+    3  & data& null &  & Xóa token\\\hline
+    \end{supertabular}
+%\end{table}
+\\
+%\begin{table}[H]
+    %\centering
+    \tablehead{%
+    \hline
+    \bfseries STT & \multicolumn{2}{c|}{\bfseries Tên biến}& \bfseries Kiểu dữ liệu &\bfseries NN &\bfseries Lưu ý\\\hline}
+    \tabletail{\hline}
+    \topcaption{api\_user\_info}
+    \label{banga7}
+    \begin{supertabular}{| p{.05\textwidth} | p{.18\textwidth} | p{.18\textwidth} |p{.10\textwidth} | p{.05\textwidth}| p{.29\textwidth} |  } 
+    \hline
+    \multicolumn{6}{|c|}{\bfseries Input}\\\hline
+    1  & \multicolumn{2}{c|}{access\_token} & string & 0 & Token đăng nhập\\\hline
+    \multicolumn{6}{|c|}{\bfseries Output}\\\hline
+    1  & code& & int &  & Mã response\\\hline
+    2  & message& & string &  & OK\\\hline
+    3  & data& & object &  & \\\cline{1-1}\cline{3-6}
+    4  & \multirow{3}{*}{}    & name & string &  & Tên người dùng\\\cline{1-1}\cline{3-6}
+    5  &   & role& string &  & Vai trò\\\cline{1-1}\cline{3-6}
+    6  &   & avatar& string &  & Avatar\\\cline{1-1}\cline{3-6}
+    7  &   & email& string &  & Địa chỉ email\\\cline{1-1}\cline{3-6}
+    8  &   & address& string &  & Địa chỉ\\\cline{1-1}\cline{3-6}
+    9  &   & phone& string &  & Số điện thoại\\\cline{1-1}\cline{3-6}
+    \end{supertabular}
+%\end{table}
+\\
+%\begin{table}[H]
+    %\centering
+    \tablehead{%
+    \hline
+    \bfseries STT & \multicolumn{4}{c|}{\bfseries Tên biến}& \bfseries Kiểu dữ liệu &\bfseries NN &\bfseries Lưu ý\\\hline}
+    \tabletail{\hline}
+    \topcaption{api\_list\_auctions}
+    \label{banga8}
+    \begin{supertabular}{| p{.05\textwidth} | p{.10\textwidth} | p{.10\textwidth}| p{.10\textwidth}| p{.10\textwidth} |p{.10\textwidth} | p{.05\textwidth}| p{.20\textwidth} |  } 
+    \hline
+    \multicolumn{8}{|c|}{\bfseries Input}\\\hline
+    1  & \multicolumn{4}{c|}{access\_token} & string & x & Token đăng nhập\\\hline
+    2  & \multicolumn{4}{c|}{index} & string & 0 & Trang hiện tại\\\hline
+    3  & \multicolumn{4}{c|}{count} & string & 0 & Số sản phẩm trên một trang\\\hline
+    4  & \multicolumn{4}{c|}{user\_id} & string & x & Danh sách phiên đấu giá theo user\_id\\\hline
+    5  & \multicolumn{4}{c|}{type} & string & x & Danh sách phiên đấu giá theo nhóm loại sản phẩm\\\hline
+    6  & category\_id & & & & string & x & Danh sách phiên đấu giá theo loại sản phẩm\\\hline
+    \multicolumn{8}{|c|}{\bfseries Output}\\\hline
+    1  & code& & & & int &  & Mã response\\\hline
+    2  & message& & & & string &  & OK\\\hline
+    3  & data& & & &object &  & \\\cline{1-1}\cline{3-8}
+    4  & \multirow{23}{*}{} & auctions &  &  & Array & & Dánh sách phiên đấu giá\\\cline{1-1}\cline{4-8}
+    5  &  & \multirow{10}{*}{} & auction\_id &  & string & & ID phiên đấu giá\\\cline{1-1}\cline{4-8}
+    6  &  &  & selling\_user\_id &  & string & & Người tạo phiên đấu giá\\\cline{1-1}\cline{4-8}
+    7  &  &  & title &  & string & & Tiêu đề phiên đấu giá\\\cline{1-1}\cline{4-8}
+    8  &  &  & start\_date &  & string & & Thời gian bắt đầu\\\cline{1-1}\cline{4-8}
+    9  &  &  & end\_date &  & string & & Thời gian kết thúc\\\cline{1-1}\cline{4-8}
+    10  &  &  & status &  & string & & Trạng thái phiên đấu giá\\\cline{1-1}\cline{4-8}
+    11  &  &  & category &  & string & & Thông tin loại sản phẩm\\\cline{1-1}\cline{4-8}
+    12  &  &  & \multirow{3}{*}{} & name & string & & Tên loại sản phẩm\\\cline{1-1}\cline{5-8}
+    13  &  &  &  & image & string & & Hình ảnh\\\cline{1-1}\cline{5-8}
+    14  &  &  &  & type & string & & Loại sản phẩm\\\cline{1-1}\cline{3-8}
+    15  & \multirow{23}{*}{} & user\_info &  &  & object & & Thông tin user\\\cline{1-1}\cline{4-8}
+    16  &  & \multirow{10}{*}{} & name &  & string & & Tên\\\cline{1-1}\cline{4-8}
+    17  &  &  & avatar &  & string & & Avatar\\\cline{1-1}\cline{4-8}
+    18  &  &  & phone &  & string & & Số điện thoại\\\cline{1-1}\cline{4-8}
+    19  &  &  & email &  & string & & Email\\\cline{1-1}\cline{4-8}
+    20  &  &  & role &  & string & & Vai trò\\\cline{1-1}\cline{4-8}
+    21  &  &  & address &  & string & & Địa chỉ\\\cline{1-1}\cline{3-8}
+    22  &  & type &  &  & string & & Nhóm loại sản phẩm\\\cline{1-1}\cline{3-8}
+    23  &  & category &  &  & string & & Tên của loại sản phẩm\\\cline{1-1}\cline{3-8}
+    24  &  & total &  &  & string & & Tổng số phiên đấu giá\\\cline{1-1}\cline{3-8}
+    \end{supertabular}
+%\end{table}
+\\
+%\begin{table}[H]
+    %\centering
+    \tablehead{%
+    \hline
+    \bfseries STT & \multicolumn{3}{c|}{\bfseries Tên biến}& \bfseries Kiểu dữ liệu &\bfseries NN &\bfseries Lưu ý\\\hline}
+    \tabletail{\hline}
+    \topcaption{api\_details\_auction}
+    \label{banga9}
+    \begin{supertabular}{| p{.05\textwidth} | p{.06\textwidth}| p{.14\textwidth} | p{.25\textwidth} |p{.10\textwidth} | p{.03\textwidth}| p{.19\textwidth} |  } 
+    \hline
+    \multicolumn{7}{|c|}{\bfseries Input}\\\hline
+    1  & \multicolumn{3}{c|}{access\_token}& string & x & \\\hline
+    \multicolumn{7}{|c|}{\bfseries Output}\\\hline
+    1  & \multicolumn{3}{c|}{code}& int &  & Mã response\\\hline
+    2  & \multicolumn{3}{c|}{message}& string &  & \\\hline
+    3  & data & & & object &  & Thông tin phiên đấu giá\\\cline{1-1}\cline{3-7}
+    4  & \multirow{5}{*}{} & auctions &  & object & & Phiên đấu giá\\\cline{1-1}\cline{4-7}
+    5  &  &  & auction\_id & string & & ID phiên đấu giá\\\cline{1-1}\cline{4-7}
+    6  &  &  & title & string & & Tiêu đề\\\cline{1-1}\cline{4-7}
+    7  &  &  & start\_date & string & & Thời gian bắt đầu\\\cline{1-1}\cline{4-7}
+    8  &  &  & end\_date & string & & Thời gian kết thúc\\\cline{1-1}\cline{4-7}
+    9  &  &  & status & string & & Trạng thái\\\cline{1-1}\cline{3-7}
+    10  & \multirow{3}{*}{} & category &  & object & & Loại sản phẩm\\\cline{1-1}\cline{4-7}
+    11  &  &  & name & string & & Tên\\\cline{1-1}\cline{4-7}
+    12  &  &  & image & string & & Hình ảnh\\\cline{1-1}\cline{4-7}
+    13  &  &  & type & string & & Loại\\\cline{1-1}\cline{3-7}
+    14  & \multirow{9}{*}{} & items &  & object & & Sản phẩm \\\cline{1-1}\cline{4-7}
+    15  &  &  & item\_id & string & & ID sản phẩm\\\cline{1-1}\cline{4-7}
+    16  &  &  & name & string & & Tên\\\cline{1-1}\cline{4-7}
+    17  &  &  & buying\_user\_id & string & & Người mua\\\cline{1-1}\cline{4-7}
+    18  &  &  & brand & string & & Thương hiệu\\\cline{1-1}\cline{4-7}
+    19  &  &  & series & string & & Số series\\\cline{1-1}\cline{4-7}
+    20  &  &  & description & string & & Mô tả\\\cline{1-1}\cline{4-7}
+    21  &  &  & starting\_price & string & & Giá khởi điểm\\\cline{1-1}\cline{4-7}
+    22  &  &  & selling\_info & string & & Thông tin thêm\\\cline{1-1}\cline{4-7}
+    23  &  &  & images & string & & Hình ảnh\\\cline{1-1}\cline{3-7}
+    14  & \multirow{9}{*}{} & selling\_user &  & object & & Người bán\\\cline{1-1}\cline{4-7}
+    15  &  &  & selling\_user\_id & string & & ID\\\cline{1-1}\cline{4-7}
+    16  &  &  & selling\_user\_name & string & & Tên\\\cline{1-1}\cline{4-7}
+    17  &  &  & selling\_user\_avatar & string & & Avatar\\\cline{1-1}\cline{3-7}
+    17  &  & max\_bid & &string& & Giá cao nhất\\\cline{1-1}\cline{3-7}
+    14  & \multirow{9}{*}{} & buying\_user &  & object & & Người mua\\\cline{1-1}\cline{4-7}
+    15  &  &  & buying\_user\_id & string & & ID\\\cline{1-1}\cline{4-7}
+    16  &  &  & buying\_user\_name & string & & Tên\\\cline{1-1}\cline{4-7}
+    17  &  &  & buying\_user\_phone & string & & Số điện thoại\\\cline{1-1}\cline{4-7}
+    17  &  &  & buying\_user\_address & string & & Địa chỉ\\\cline{1-1}\cline{3-7}
+    17  &  & like &  &string & & Yêu thích hay không\\\hline
+    \end{supertabular}
+%\end{table}
+\\
+%\begin{table}[H]
+    %\centering
+    \tablehead{%
+    \hline
+    \bfseries STT & \multicolumn{2}{c|}{\bfseries Tên biến}& \bfseries Kiểu dữ liệu &\bfseries NN &\bfseries Lưu ý\\\hline}
+    \tabletail{\hline}
+    \topcaption{api\_create\_auction}
+    \label{banga10}
+    \begin{supertabular}{| p{.05\textwidth} | p{.18\textwidth} | p{.18\textwidth} |p{.11\textwidth} | p{.05\textwidth}| p{.28\textwidth} |  } 
+    \hline
+    \multicolumn{6}{|c|}{\bfseries Input}\\\hline
+    1  & \multicolumn{2}{c|}{access\_token} & string & 0 & Token đăng nhập\\\hline
+    2  & \multicolumn{2}{c|}{category\_id} & string & 0 & ID loại sản phẩm\\\hline
+    3  & \multicolumn{2}{c|}{start\_date} & date\_time & 0 & Thời gian bắt đầu\\\hline
+    4  & \multicolumn{2}{c|}{end\_date} & date\_time & 0 & Thời gian kết thúc\\\hline
+    5  & title & & string & 0 & Tiêu đề\\\hline
+    \multicolumn{6}{|c|}{\bfseries Output}\\\hline
+    1  & code& & int &  & Mã response\\\hline
+    2  & message& & string &  & OK\\\hline
+    3  & data& & object &  & Thông tin phiên đấu giá\\\cline{1-1}\cline{3-6}
+    4  & \multirow{7}{*}{}    & auction\_id & string &  & ID phiên đấu giá\\\cline{1-1}\cline{3-6}
+    5  &   & title& string &  & Tiêu đề\\\cline{1-1}\cline{3-6}
+    6  &   & category\_id& string &  & ID loại sản phẩm\\\cline{1-1}\cline{3-6}
+    7  &   & selling\_user\_id& string &  & ID người bán\\\cline{1-1}\cline{3-6}
+    8  &   & start\_date& string &  & Thời gian bắt đầu\\\cline{1-1}\cline{3-6}
+    9  &   & end\_date& string &  & Thời gian kết thúc\\\cline{1-1}\cline{3-6}
+    10  &   & status& string &  & Trạng thái\\\hline
+    \end{supertabular}
+%\end{table}
+\\
+%\begin{table}[H]
+    %\centering
+    \tablehead{%
+    \hline
+    \bfseries STT & \multicolumn{2}{c|}{\bfseries Tên biến}& \bfseries Kiểu dữ liệu &\bfseries NN &\bfseries Lưu ý\\\hline}
+    \tabletail{\hline}
+    \topcaption{api\_edit\_auction}
+    \label{banga11}
+    \begin{supertabular}{| p{.05\textwidth} | p{.18\textwidth} | p{.18\textwidth} |p{.11\textwidth} | p{.05\textwidth}| p{.28\textwidth} |  } 
+    \hline
+    \multicolumn{6}{|c|}{\bfseries Input}\\\hline
+    1  & \multicolumn{2}{c|}{access\_token} & string & 0 & Token đăng nhập\\\hline
+    2  & \multicolumn{2}{c|}{category\_id} & string & 0 & Phân loại tìm kiếm\\\hline
+    3  & \multicolumn{2}{c|}{start\_date} & date\_time & 0 & Từ khòa tìm kiếm\\\hline
+    4  & \multicolumn{2}{c|}{end\_date} & date\_time & 0 & Từ khòa tìm kiếm\\\hline
+    5  & title & & string & 0 & Từ khòa tìm kiếm\\\hline
+    \multicolumn{6}{|c|}{\bfseries Output}\\\hline
+    1  & code& & int &  & Mã response\\\hline
+    2  & message& & string &  & OK\\\hline
+    3  & data& & object &  & Thông tin phiên đấu giá\\\cline{1-1}\cline{3-6}
+    4  & \multirow{7}{*}{}    & auction\_id & string &  & ID phiên đấu giá\\\cline{1-1}\cline{3-6}
+    5  &   & title& string &  & Tiêu đề\\\cline{1-1}\cline{3-6}
+    6  &   & category\_id& string &  & ID loại sản phẩm\\\cline{1-1}\cline{3-6}
+    7  &   & selling\_user\_id& string &  & ID người bán\\\cline{1-1}\cline{3-6}
+    8  &   & start\_date& string &  & Thời gian bắt đầu\\\cline{1-1}\cline{3-6}
+    9  &   & end\_date& string &  & Thời gian kết thúc\\\cline{1-1}\cline{3-6}
+    10  &   & status& string &  & Trạng thái\\\cline{1-1}\cline{1-6}
+    \end{supertabular}
+%\end{table}
+\\
+%\begin{table}[H]
+    %\centering
+    \tablehead{%
+    \hline
+    \bfseries STT & \bfseries Tên biến& \bfseries Kiểu dữ liệu &\bfseries NN &\bfseries Lưu ý\\\hline}
+    \tabletail{\hline}
+    \topcaption{api\_delete\_auction}
+    \label{banga12}
+    \begin{supertabular}{| p{.05\textwidth} | p{.39\textwidth} |p{.10\textwidth} | p{.05\textwidth}| p{.29\textwidth} |  } 
+    \hline
+    \multicolumn{5}{|c|}{\bfseries Input}\\\hline
+    1  & access\_token& string & 0 & Token đăng nhập\\\hline
+    \multicolumn{5}{|c|}{\bfseries Output}\\\hline
+    1  & code& int &  & Mã response\\\hline
+    2  & message& string &  & OK\\\hline
+    3  & data& null &  & Xóa phiên đấu giá\\\hline
+    \end{supertabular}
+%\end{table}
+\\
+%\begin{table}[H]
+    %\centering
+    \tablehead{%
+    \hline
+    \bfseries STT & \multicolumn{2}{c|}{\bfseries Tên biến}& \bfseries Kiểu dữ liệu &\bfseries NN &\bfseries Lưu ý\\\hline}
+    \tabletail{\hline}
+    \topcaption{api\_create\_item}
+    \label{banga13}
+    \begin{supertabular}{| p{.05\textwidth} | p{.18\textwidth} | p{.18\textwidth} |p{.11\textwidth} | p{.05\textwidth}| p{.28\textwidth} |  } 
+    \hline
+    \multicolumn{6}{|c|}{\bfseries Input}\\\hline
+    1  & \multicolumn{2}{c|}{access\_token} & string & 0 & Token đăng nhập\\\hline
+    2  & \multicolumn{2}{c|}{name} & string & 0 & Tên sản phẩm\\\hline
+    3  & \multicolumn{2}{c|}{starting\_price} & string & 0 & Giá khởi điểm\\\hline
+    4  & \multicolumn{2}{c|}{brand\_id} & string & 0 & ID thương hiệu\\\hline
+    5  & \multicolumn{2}{c|}{description} & text & 0 & Mô tả\\\hline
+    6  & \multicolumn{2}{c|}{series} & string & x & Số series\\\hline
+    7  & \multicolumn{2}{c|}{images} & array & x & Hình ảnh\\\hline
+    \multicolumn{6}{|c|}{\bfseries Output}\\\hline
+    1  & code& & int &  & Mã response\\\hline
+    2  & message& & string &  & OK\\\hline
+    3  & data& & object &  & Thông tin phiên đấu giá\\\cline{1-1}\cline{3-6}
+    4  & \multirow{5}{*}{}    & auction\_id & string &  & ID phiên đấu giá\\\cline{1-1}\cline{3-6}
+    5  &   & brand\_id& string &  & ID thương hiệu\\\cline{1-1}\cline{3-6}
+    6  &   & series& string &  & Số series\\\cline{1-1}\cline{3-6}
+    7  &   & name& string &  & Tên sản phẩm\\\cline{1-1}\cline{3-6}
+    8  &   & description& string &  & Mô tả\\\cline{1-1}\cline{3-6}
+    9  &   & images& array &  & Hình ảnh\\\cline{1-1}\cline{3-6}
+    \end{supertabular}
+%\end{table}
+\\
+%\begin{table}[H]
+    %\centering
+    \tablehead{%
+    \hline
+    \bfseries STT & \multicolumn{2}{c|}{\bfseries Tên biến}& \bfseries Kiểu dữ liệu &\bfseries NN &\bfseries Lưu ý\\\hline}
+    \tabletail{\hline}
+    \topcaption{api\_edit\_item}
+    \label{banga14}
+    \begin{supertabular}{| p{.05\textwidth} | p{.18\textwidth} | p{.18\textwidth} |p{.11\textwidth} | p{.05\textwidth}| p{.28\textwidth} |  } 
+    \hline
+    \multicolumn{6}{|c|}{\bfseries Input}\\\hline
+    1  & \multicolumn{2}{c|}{access\_token} & string & 0 & Token đăng nhập\\\hline
+    2  & \multicolumn{2}{c|}{name} & string & 0 & Tên sản phẩm\\\hline
+    3  & \multicolumn{2}{c|}{starting\_price} & string & 0 & Giá khởi điểm\\\hline
+    4  & \multicolumn{2}{c|}{brand\_id} & string & 0 & ID thương hiệu\\\hline
+    5  & \multicolumn{2}{c|}{description} & text & 0 & Mô tả\\\hline
+    6  & \multicolumn{2}{c|}{series} & string & x & Số series\\\hline
+    7  & \multicolumn{2}{c|}{images} & array & x & Hình ảnh\\\hline
+    \multicolumn{6}{|c|}{\bfseries Output}\\\hline
+    1  & code& & int &  & Mã response\\\hline
+    2  & message& & string &  & OK\\\hline
+    3  & data& & object &  & Thông tin phiên đấu giá\\\cline{1-1}\cline{3-6}
+    4  & \multirow{5}{*}{}    & auction\_id & string &  & ID phiên đấu giá\\\cline{1-1}\cline{3-6}
+    5  &   & brand\_id& string &  & ID thương hiệu\\\cline{1-1}\cline{3-6}
+    6  &   & series& string &  & Số series\\\cline{1-1}\cline{3-6}
+    7  &   & name& string &  & Tên sản phẩm\\\cline{1-1}\cline{3-6}
+    8  &   & description& string &  & Mô tả\\\cline{1-1}\cline{3-6}
+    9  &   & images& array &  & Hình ảnh\\\cline{1-1}\cline{3-6}
+    \end{supertabular}
+%\end{table}
+\\
+%\begin{table}[H]
+    %\centering
+    \tablehead{%
+    \hline
+    \bfseries STT & \multicolumn{2}{c|}{\bfseries Tên biến}& \bfseries Kiểu dữ liệu &\bfseries NN &\bfseries Lưu ý\\\hline}
+    \tabletail{\hline}
+    \topcaption{api\_create\_comment}
+    \label{banga15}
+    \begin{supertabular}{| p{.05\textwidth} | p{.18\textwidth} | p{.18\textwidth} |p{.11\textwidth} | p{.05\textwidth}| p{.28\textwidth} |  } 
+    \hline
+    \multicolumn{6}{|c|}{\bfseries Input}\\\hline
+    1  & \multicolumn{2}{c|}{access\_token} & string & 0 & Token đăng nhập\\\hline
+    2  & \multicolumn{2}{c|}{content} & text & 0 & Nội dung bình luận\\\hline
+    \multicolumn{6}{|c|}{\bfseries Output}\\\hline
+    1  & code& & int &  & Mã response\\\hline
+    2  & message& & string &  & OK\\\hline
+    3  & data& & object &  & Thông tin phiên đấu giá\\\cline{1-1}\cline{3-6}
+    4  & \multirow{5}{*}{}    & auction\_id & string &  & ID phiên đấu giá\\\cline{1-1}\cline{3-6}
+    5  &   & user\_id& string &  & ID người bình luận\\\cline{1-1}\cline{3-6}
+    6  &   & content& string &  & Nội dung\\\cline{1-1}\cline{3-6}
+    7  &   & created\_at& string &  & Thời gian bình luận\\\cline{1-1}\cline{3-6}
+    8  &   & total& string &  & Tổng số bình luận đến hiện tại\\\cline{1-1}\cline{3-6}
+    \end{supertabular}
+%\end{table}
+\\
+%\begin{table}[H]
+    %\centering
+    \tablehead{%
+    \hline
+    \bfseries STT & \multicolumn{3}{c|}{\bfseries Tên biến}& \bfseries Kiểu dữ liệu &\bfseries NN &\bfseries Lưu ý\\\hline}
+    \tabletail{\hline}
+    \topcaption{api\_get\_list\_comments}
+    \label{banga16}
+    \begin{supertabular}{| p{.05\textwidth} | p{.10\textwidth}| p{.14\textwidth} | p{.15\textwidth} |p{.10\textwidth} | p{.05\textwidth}| p{.23\textwidth} |  } 
+    \hline
+    \multicolumn{7}{|c|}{\bfseries Input}\\\hline
+    1  & \multicolumn{3}{c|}{access\_token}& string & x & Token đăng nhập\\\hline
+    2  & \multicolumn{3}{c|}{index}& string & 0 & Trang hiện tại\\\hline
+    3  & \multicolumn{3}{c|}{count}& string &  & Tổng số bình luận trên một trang\\\hline
+    \multicolumn{7}{|c|}{\bfseries Output}\\\hline
+    1  & code & & & int &  & Mã response\\\hline
+    2  & message & & & string &  & \\\hline
+    3  & data & & & object &  & \\\cline{1-1}\cline{3-7}
+    4  & \multirow{10}{*}{}    & comments & & array &  & Danh sách bình luận\\\cline{1-1}\cline{3-7}
+    5  &      &\multirow{10}{*}{} & user\_name & string &  & Tài khoản bình luận\\\cline{1-1}\cline{4-7}
+    6  &      & & user\_avatar & string &  & Avatar\\\cline{1-1}\cline{4-7}
+    7  &      & & content & string &  & Nội dung\\\cline{1-1}\cline{4-7}
+    8  &      & & created\_at & string &  & Thời gian\\\cline{1-1}\cline{3-7}
+    9  &      & total &  & string &  & Tổng số bình luận\\\cline{1-1}\cline{4-7}
+    \end{supertabular}
+%\end{table}
+\\
+%\begin{table}[H]
+    %\centering
+    \tablehead{%
+    \hline
+    \bfseries STT & \bfseries Tên biến& \bfseries Kiểu dữ liệu &\bfseries NN &\bfseries Lưu ý\\\hline}
+    \tabletail{\hline}
+    \topcaption{api\_delete\_comment}
+    \label{banga17}
+    \begin{supertabular}{| p{.05\textwidth} | p{.39\textwidth} |p{.10\textwidth} | p{.05\textwidth}| p{.29\textwidth} |  } 
+    \hline
+    \multicolumn{5}{|c|}{\bfseries Input}\\\hline
+    1  & access\_token& string & 0 & Token đăng nhập\\\hline
+    \multicolumn{5}{|c|}{\bfseries Output}\\\hline
+    1  & code & int &  & Mã response\\\hline
+    2  & message & string &  & Đã xóa bình luận\\\hline
+    3  & data & null &  & \\\hline
+    \end{supertabular}
+%\end{table}
+\\
+%\begin{table}[H]
+    %\centering
+    \tablehead{%
+    \hline
+    \bfseries STT & \multicolumn{2}{c|}{\bfseries Tên biến}& \bfseries Kiểu dữ liệu &\bfseries NN &\bfseries Lưu ý\\\hline}
+    \tabletail{\hline}
+    \topcaption{api\_create\_bid}
+    \label{banga18}
+    \begin{supertabular}{| p{.05\textwidth} | p{.18\textwidth} | p{.18\textwidth} |p{.11\textwidth} | p{.05\textwidth}| p{.28\textwidth} |  } 
+    \hline
+    \multicolumn{6}{|c|}{\bfseries Input}\\\hline
+    1  & \multicolumn{2}{c|}{access\_token} & string & 0 & Token đăng nhập\\\hline
+    2  & \multicolumn{2}{c|}{price} & string & 0 & Giá đưa ra\\\hline
+    \multicolumn{6}{|c|}{\bfseries Output}\\\hline
+    1  & code& & int &  & Mã response\\\hline
+    2  & message& & string &  & OK\\\hline
+    3  & data& & object &  &Thông tin lượt trả giá\\\cline{1-1}\cline{3-6}
+    4  & \multirow{5}{*}{}    & user\_id & string &  & ID người trả giá\\\cline{1-1}\cline{3-6}
+    5  &   & auction\_id& string &  & ID phiên đấu giá\\\cline{1-1}\cline{3-6}
+    6  &   & price& string &  & Giá đưa ra\\\cline{1-1}\cline{3-6}
+    7  &   & created\_at& string &  & Thời gian trả giá\\\cline{1-1}\cline{3-6}
+    8  &   & total& string &  & Tổng số lượt trả giá\\\cline{1-1}\cline{3-6}
+    \end{supertabular}
+%\end{table}
+\\
+%\begin{table}[H]
+    %\centering
+    \tablehead{%
+    \hline
+    \bfseries STT & \multicolumn{3}{c|}{\bfseries Tên biến}& \bfseries Kiểu dữ liệu &\bfseries NN &\bfseries Lưu ý\\\hline}
+    \tabletail{\hline}
+    \topcaption{api\_get\_list\_bids}
+    \label{banga19}
+    \begin{supertabular}{| p{.05\textwidth} | p{.10\textwidth}| p{.14\textwidth} | p{.15\textwidth} |p{.10\textwidth} | p{.05\textwidth}| p{.23\textwidth} |  } 
+    \hline
+    \multicolumn{7}{|c|}{\bfseries Input}\\\hline
+    1  & \multicolumn{3}{c|}{access\_token}& string & x & Token đăng nhập\\\hline
+    2  & \multicolumn{3}{c|}{index}& string & 0 & Trang hiện tại\\\hline
+    3  & \multicolumn{3}{c|}{count}& string &  & Tổng số trả giá trên một trang\\\hline
+    \multicolumn{7}{|c|}{\bfseries Output}\\\hline
+    1  & code & & & int &  & Mã response\\\hline
+    2  & message & & & string &  & \\\hline
+    3  & data & & & object &  & \\\cline{1-1}\cline{3-7}
+    4  & \multirow{10}{*}{}    & bids & & array &  & Danh sách trả giá\\\cline{1-1}\cline{3-7}
+    5  &      &\multirow{10}{*}{} & user\_name & string &  & Tài khoản trả giá\\\cline{1-1}\cline{4-7}
+    6  &      & & user\_avatar & string &  & Avatar\\\cline{1-1}\cline{4-7}
+    7  &      & & price & string &  & Giá đưa ra\\\cline{1-1}\cline{4-7}
+    8  &      & & created\_at & string &  & Thời gian\\\cline{1-1}\cline{3-7}
+    9  &      & total &  & string &  & Tổng số trả giá\\\hline
+    \end{supertabular}
+%\end{table}
+\\
+%\begin{table}[H]
+    %\centering
+    \tablehead{%
+    \hline
+    \bfseries STT & \bfseries Tên biến& \bfseries Kiểu dữ liệu &\bfseries NN &\bfseries Lưu ý\\\hline}
+    \tabletail{\hline}
+    \topcaption{api\_delivery}
+    \label{banga20}
+    \begin{supertabular}{| p{.05\textwidth} | p{.39\textwidth} |p{.10\textwidth} | p{.05\textwidth}| p{.29\textwidth} |  } 
+    \hline
+    \multicolumn{5}{|c|}{\bfseries Input}\\\hline
+    1  & access\_token& string & 0 & Token đăng nhập\\\hline
+    \multicolumn{5}{|c|}{\bfseries Output}\\\hline
+    1  & code & int &  & Mã response\\\hline
+    2  & message & string &  & Đã cập nhật trạng thái giao hàng\\\hline
+    3  & data & null &  & \\\hline
+    \end{supertabular}
+%\end{table}
+\\
+%\begin{table}[H]
+    %\centering
+    \tablehead{%
+    \hline
+    \bfseries STT & \multicolumn{2}{c|}{\bfseries Tên biến}& \bfseries Kiểu dữ liệu &\bfseries NN &\bfseries Lưu ý\\\hline}
+    \tabletail{\hline}
+    \topcaption{api\_rate}
+    \label{banga21}
+    \begin{supertabular}{| p{.05\textwidth} | p{.18\textwidth} | p{.18\textwidth} |p{.10\textwidth} | p{.05\textwidth}| p{.29\textwidth} |  } 
+    \hline
+    \multicolumn{6}{|c|}{\bfseries Input}\\\hline
+    1  & \multicolumn{2}{c|}{access\_token} & string & 0 & Token đăng nhập\\\hline
+    2  & \multicolumn{2}{c|}{star} & string & 0 & Số sao đánh giá\\\hline
+    3  & \multicolumn{2}{c|}{content} & string & 0 & Nội dung đánh giá\\\hline
+    4  & \multicolumn{2}{c|}{image} & string & x & Hình ảnh liên quan\\\hline
+    \multicolumn{6}{|c|}{\bfseries Output}\\\hline
+    1  & code& & int &  & Mã response\\\hline
+    2  & message& & string &  & OK\\\hline
+    3  & data& & object &  & \\\cline{1-1}\cline{3-6}
+    4  & \multirow{3}{*}{}    & star & string &  & Số sao đánh giá\\\cline{1-1}\cline{3-6}
+    5  &   & content& string &  & Nội dung đánh giá\\\cline{1-1}\cline{3-6}
+    6  &   & auction\_id & string &  & ID phiên đấu giá\\\cline{1-1}\cline{3-6}
+    7  &   & buying\_user\_id & string &  & ID tài khoản đánh giá\\\cline{1-1}\cline{3-6}
+    8  &   & image & string &  & Hình ảnh liên quan\\\cline{1-1}\cline{3-6}
+    \end{supertabular}
+%\end{table}
+\\
+%\begin{table}[H]
+    %\centering
+    \tablehead{%
+    \hline
+    \bfseries STT & \multicolumn{3}{c|}{\bfseries Tên biến}& \bfseries Kiểu dữ liệu &\bfseries NN &\bfseries Lưu ý\\\hline}
+    \tabletail{\hline}
+    \topcaption{api\_get\_list\_rates}
+    \label{banga22}
+    \begin{supertabular}{| p{.05\textwidth} | p{.10\textwidth}| p{.14\textwidth} | p{.15\textwidth} |p{.10\textwidth} | p{.05\textwidth}| p{.23\textwidth} |  } 
+    \hline
+    \multicolumn{7}{|c|}{\bfseries Input}\\\hline
+    1  & \multicolumn{3}{c|}{access\_token}& string & x & Token đăng nhập\\\hline
+    2  & \multicolumn{3}{c|}{index}& string & 0 & Trang hiện tại\\\hline
+    3  & \multicolumn{3}{c|}{count}& string &  & Tổng số đánh giá trên một trang\\\hline
+    \multicolumn{7}{|c|}{\bfseries Output}\\\hline
+    1  & code & & & int &  & Mã response\\\hline
+    2  & message & & & string &  & \\\hline
+    3  & data & & & object &  & \\\cline{1-1}\cline{3-7}
+    4  & \multirow{10}{*}{}    & rates & & array &  & Danh sách đánh giá\\\cline{1-1}\cline{3-7}
+    5  &      &\multirow{10}{*}{} & user\_name & string &  & Tài khoản trả giá\\\cline{1-1}\cline{4-7}
+    6  &      & & user\_avatar & string &  & Avatar\\\cline{1-1}\cline{4-7}
+    7  &      & & star & string &  & Số sao đánh giá\\\cline{1-1}\cline{4-7}
+    8  &      & & content & string &  & Nội dung\\\cline{1-1}\cline{4-7}
+    9  &      & & image & string &  & Hình ảnh liên quan\\\cline{1-1}\cline{4-7}
+    10  &      & & created\_at & string &  & Thời gian\\\cline{1-1}\cline{3-7}
+    11  &      & total &  & string &  & Tổng số đánh giá\\\hline
+    \end{supertabular}
+%\end{table}
+\\
+%\begin{table}[H]
+    %\centering
+    \tablehead{%
+    \hline
+    \bfseries STT & \multicolumn{3}{c|}{\bfseries Tên biến}& \bfseries Kiểu dữ liệu &\bfseries NN &\bfseries Lưu ý\\\hline}
+    \tabletail{\hline}
+    \topcaption{api\_get\_list\_categories}
+    \label{banga23}
+    \begin{supertabular}{| p{.05\textwidth} | p{.10\textwidth}| p{.14\textwidth} | p{.15\textwidth} |p{.10\textwidth} | p{.05\textwidth}| p{.23\textwidth} |  } 
+    \hline
+    \multicolumn{7}{|c|}{\bfseries Input}\\\hline
+    \multicolumn{7}{|c|}{\bfseries Output}\\\hline
+    1  & code & & & int &  & Mã response\\\hline
+    2  & message & & & string &  & \\\hline
+    3  & data & & & object &  & \\\cline{1-1}\cline{3-7}
+    4  & \multirow{10}{*}{}    & categories & & array &  & Danh sách loại sản phẩm\\\cline{1-1}\cline{3-7}
+    5  &      &\multirow{10}{*}{} & category\_id & string &  & ID loại sản phẩm\\\cline{1-1}\cline{4-7}
+    6  &      & & name & string &  & Tên loại sản phẩm\\\cline{1-1}\cline{4-7}
+    7  &      & & image & string &  & Hình ảnh\\\cline{1-1}\cline{4-7}
+    8  &      & & type & string &  & Nhóm loại sản phẩm\\\cline{1-1}\cline{3-7}
+    \end{supertabular}
+%\end{table}
+\\
+%\begin{table}[H]
+    %\centering
+    \tablehead{%
+    \hline
+    \bfseries STT & \multicolumn{3}{c|}{\bfseries Tên biến}& \bfseries Kiểu dữ liệu &\bfseries NN &\bfseries Lưu ý\\\hline}
+    \tabletail{\hline}
+    \topcaption{api\_get\_list\_brands}
+    \label{banga24}
+    \begin{supertabular}{| p{.05\textwidth} | p{.10\textwidth}| p{.14\textwidth} | p{.15\textwidth} |p{.10\textwidth} | p{.05\textwidth}| p{.23\textwidth} |  } 
+    \hline
+    \multicolumn{7}{|c|}{\bfseries Input}\\\hline
+    \multicolumn{7}{|c|}{\bfseries Output}\\\hline
+    1  & code & & & int &  & Mã response\\\hline
+    2  & message & & & string &  & \\\hline
+    3  & data & & & object &  & \\\cline{1-1}\cline{3-7}
+    4  & \multirow{10}{*}{}    & brands & & array &  & Danh sách thương hiệu\\\cline{1-1}\cline{3-7}
+    5  &      &\multirow{10}{*}{} & brand\_id & string &  & ID thương hiệu\\\cline{1-1}\cline{4-7}
+    6  &      & & name & string &  & Tên thương hiệu\\\cline{1-1}\cline{4-7}
+    \end{supertabular}
+%\end{table}
+\\
+%\begin{table}[H]
+    %\centering
+    \tablehead{%
+    \hline
+    \bfseries STT & \multicolumn{4}{c|}{\bfseries Tên biến}& \bfseries Kiểu dữ liệu &\bfseries NN &\bfseries Lưu ý\\\hline}
+    \tabletail{\hline}
+    \topcaption{api\_accept\_max\_bid}
+    \label{banga25}
+    \begin{supertabular}{| p{.05\textwidth} | p{.10\textwidth} | p{.11\textwidth}| p{.16\textwidth}| p{.08\textwidth} |p{.11\textwidth} | p{.03\textwidth}| p{.17\textwidth} |  } 
+    \hline
+    \multicolumn{8}{|c|}{\bfseries Input}\\\hline
+    1  & \multicolumn{4}{c|}{access\_token} & string & 0 & Token đăng nhập\\\hline
+    2  & \multicolumn{4}{c|}{selling\_info} & string & 0 & Thông tin khi chấp nhận giá\\\hline
+    \multicolumn{8}{|c|}{\bfseries Output}\\\hline
+    1  & code& & & & int &  & Mã response\\\hline
+    2  & message& & & & string &  & OK\\\hline
+    3  & data& & & &object &  & \\\cline{1-1}\cline{3-8}
+    4  & \multirow{23}{*}{} & item\_info &  &  & object & & Thông tin sản phẩm\\\cline{1-1}\cline{4-8}
+    5  &  & \multirow{10}{*}{} & name &  & string & & Tên sản phẩm\\\cline{1-1}\cline{4-8}
+    6  &  &  & selling\_user &  & string & & Thông tin người bán\\\cline{1-1}\cline{4-8}
+    7  &  &  & \multirow{3}{*}{} & name & string & & Tên\\\cline{1-1}\cline{5-8}
+    8  &  &  &  & email & string & & Email\\\cline{1-1}\cline{5-8}
+    9  &  &  &  & address & string & & Địa chỉ\\\cline{1-1}\cline{5-8}
+    10  &  &  &  & phone & string & & Số điện thoại\\\cline{1-1}\cline{4-8}
+    11  &  &  & buying\_user &  & string & & Thông tin người mua\\\cline{1-1}\cline{4-8}
+    12  &  &  & \multirow{3}{*}{} & name & string & & Tên\\\cline{1-1}\cline{5-8}
+    13  &  &  &  & email & string & & Email\\\cline{1-1}\cline{5-8}
+    14  &  &  &  & address & string & & Địa chỉ\\\cline{1-1}\cline{5-8}
+    15  &  &  &  & phone & string & & Số điện thoại\\\cline{1-1}\cline{4-8}
+    16  &  &  & brand & & string & & Thương hiệu\\\cline{1-1}\cline{4-8}
+    17  &  &  & series & & string & & Số series\\\cline{1-1}\cline{4-8}
+    18  &  &  & starting\_price & & string & & Giá khởi điểm\\\cline{1-1}\cline{4-8}
+    19  &  &  & max\_price & & string & & Giá bán\\\cline{1-1}\cline{4-8}
+    20  &  &  & selling\_info & & string & & Thông tin khi chấp nhận giá\\\cline{1-1}\cline{3-8}
+    21  & \multirow{23}{*}{} & auction &  &  & object & & Dánh sách phiên đấu giá\\\cline{1-1}\cline{4-8}
+    22  &  &  & title & & string & & Tiêu đề phiên đấu giá\\\cline{1-1}\cline{4-8}
+    23  &  &  & start\_date & & date\_time & & Thời gian bắt đầu\\\cline{1-1}\cline{4-8}
+    23  &  &  & end\_date & & date\_time & & Thời gian kết thúc\\\cline{1-1}\cline{4-8}
+    \end{supertabular}
+%\end{table}
+\\
+%\begin{table}[H]
+    %\centering
+    \tablehead{%
+    \hline
+    \bfseries STT & \multicolumn{2}{c|}{\bfseries Tên biến}& \bfseries Kiểu dữ liệu &\bfseries NN &\bfseries Lưu ý\\\hline}
+    \tabletail{\hline}
+    \topcaption{api\_like}
+    \label{banga26}
+    \begin{supertabular}{| p{.05\textwidth} | p{.18\textwidth} | p{.18\textwidth} |p{.10\textwidth} | p{.05\textwidth}| p{.29\textwidth} |  } 
+    \hline
+    \multicolumn{6}{|c|}{\bfseries Input}\\\hline
+    1  & \multicolumn{2}{c|}{access\_token} & string & 0 & Token đăng nhập\\\hline
+    \multicolumn{6}{|c|}{\bfseries Output}\\\hline
+    1  & code& & int &  & Mã response\\\hline
+    2  & message& & string &  & OK\\\hline
+    3  & data& & object &  & \\\cline{1-1}\cline{3-6}
+    4  & \multirow{3}{*}{}    & user\_id & string &  & Tài khoản yêu thích phiên đấu giá\\\cline{1-1}\cline{3-6}
+    5  &   & auction\_id& string &  & ID phiên đấu giá\\\cline{1-1}\cline{3-6}
+    6  &   & is\_liked & string &  & Yêu thích hay không\\\cline{1-1}\cline{3-6}
+    \end{supertabular}
+%\end{table}
+\\
+%\begin{table}[H]
+    %\centering
+    \tablehead{%
+    \hline
+    \bfseries STT & \multicolumn{4}{c|}{\bfseries Tên biến}& \bfseries Kiểu dữ liệu &\bfseries NN &\bfseries Lưu ý\\\hline}
+    \tabletail{\hline}
+    \topcaption{api\_list\_likes}
+    \label{banga27}
+    \begin{supertabular}{| p{.05\textwidth} | p{.10\textwidth} | p{.10\textwidth}| p{.12\textwidth}| p{.08\textwidth} |p{.12\textwidth} | p{.03\textwidth}| p{.20\textwidth} |  } 
+    \hline
+    \multicolumn{8}{|c|}{\bfseries Input}\\\hline
+    1  & \multicolumn{4}{c|}{access\_token} & string & x & Token đăng nhập\\\hline
+    2  & \multicolumn{4}{c|}{index} & string & 0 & Trang hiện tại\\\hline
+    3  & \multicolumn{4}{c|}{count} & string & 0 & Số phiên đấu giá yêu thích trên một trang\\\hline
+    \multicolumn{8}{|c|}{\bfseries Output}\\\hline
+    1  & code& & & & int &  & Mã response\\\hline
+    2  & message& & & & string &  & OK\\\hline
+    3  & data& & & &object &  & \\\cline{1-1}\cline{3-8}
+    4  & \multirow{23}{*}{} & auctions &  &  & Array & & Dánh sách phiên đấu giá yêu thích\\\cline{1-1}\cline{4-8}
+    5  &  & \multirow{10}{*}{} & auction\_id &  & string & & ID phiên đấu giá\\\cline{1-1}\cline{4-8}
+    6  &  &  & title &  & string & & Tiêu đề phiên đấu giá\\\cline{1-1}\cline{4-8}
+    7  &  &  & start\_date &  & date\_time &  & Thời gian bắt đầu\\\cline{1-1}\cline{4-8}
+    8  &  &  & end\_date &  & date\_time & & Thời gian kết thúc\\\cline{1-1}\cline{4-8}
+    9  &  &  & status &  & string & & Trạng thái phiên đấu giá\\\cline{1-1}\cline{4-8}
+    10  &  &  & category &  & string & & Thông tin loại sản phẩm\\\cline{1-1}\cline{4-8}
+    11  &  &  & \multirow{3}{*}{} & name & string & & Tên loại sản phẩm\\\cline{1-1}\cline{5-8}
+    12  &  &  &  & image & string & & Hình ảnh\\\cline{1-1}\cline{5-8}
+    13  &  &  &  & type & string & & Loại sản phẩm\\\cline{1-1}\cline{4-8}
+    14  &  &  &  is\_liked &  & string & & Phiên đấu giá có được yêu thích hay không\\\cline{1-1}\cline{3-8}
+    15  &  & total &  &  & string & & Tổng số phiên đấu giá\\\cline{1-1}\cline{3-8}
+    \end{supertabular}
+%\end{table}
+\\
+%\begin{table}[H]
+    %\centering
+    \tablehead{%
+    \hline
+    \bfseries STT & \multicolumn{3}{c|}{\bfseries Tên biến}& \bfseries Kiểu dữ liệu &\bfseries NN &\bfseries Lưu ý\\\hline}
+    \tabletail{\hline}
+    \topcaption{api\_list\_news}
+    \label{banga28}
+    \begin{supertabular}{| p{.05\textwidth} | p{.10\textwidth}| p{.10\textwidth} | p{.12\textwidth} |p{.10\textwidth} | p{.05\textwidth}| p{.31\textwidth} |  } 
+    \hline
+    \multicolumn{7}{|c|}{\bfseries Input}\\\hline
+    1  & \multicolumn{3}{c|}{access\_token}& string & x & Token đăng nhập\\\hline
+    2  & \multicolumn{3}{c|}{index}& string & 0 & Trang hiện tại\\\hline
+    3  & \multicolumn{3}{c|}{count}& string & 0 & Số tin trức trên một trang\\\hline
+    \multicolumn{7}{|c|}{\bfseries Output}\\\hline
+    1  & \multicolumn{3}{c|}{code}& int &  & Mã response\\\hline
+    2  & \multicolumn{3}{c|}{message}& string &  & \\\hline
+    3  & data & & & object &  & Thông tin về tin tức\\\cline{1-1}\cline{3-7}
+    4  & \multirow{10}{*}{}    & news & & array &  & Danh sách tin tức\\\cline{1-1}\cline{3-7}
+    5 &      &      & user & string &  & Người viết tin tức\\\cline{1-1}\cline{4-7}
+    6 &      &      & new\_id & string &  & ID tin tức\\\cline{1-1}\cline{4-7}
+    7 &      &      & title & string &  & Tiêu đề\\\cline{1-1}\cline{4-7}
+    8 &      &      & content & string &  & Nội dung\\\cline{1-1}\cline{4-7}
+    9 &      &      & updated\_at & string &  & Thời gian cập nhật mới nhất\\\cline{1-1}\cline{4-7}
+    10 &      &      & is\_read & string &  & Tin tức đã đọc hay chưa\\\cline{1-1}\cline{3-7}
+    11 &      &total&  & string &  & Tổng số tin tức hiện tại\\\hline
+    \end{supertabular}
+%\end{table}
+\\
+%\begin{table}[H]
+    %\centering
+    \tablehead{%
+    \hline
+    \bfseries STT & \multicolumn{2}{c|}{\bfseries Tên biến}& \bfseries Kiểu dữ liệu &\bfseries NN &\bfseries Lưu ý\\\hline}
+    \tabletail{\hline}
+    \topcaption{api\_read\_new}
+    \label{banga29}
+    \begin{supertabular}{| p{.05\textwidth} | p{.10\textwidth} | p{.26\textwidth} |p{.10\textwidth} | p{.05\textwidth}| p{.29\textwidth} |  } 
+    \hline
+    \multicolumn{6}{|c|}{\bfseries Input}\\\hline
+    1  & \multicolumn{2}{c|}{access\_token} & string & x & Token đăng nhập\\\hline
+    \multicolumn{6}{|c|}{\bfseries Output}\\\hline
+    1  & code& & int &  & Mã response\\\hline
+    2  & message& & string &  & OK\\\hline
+    3  & data& & object &  & \\\cline{1-1}\cline{3-6}
+    4  & \multirow{3}{*}{}    & is\_read & string &  & Đã đọc tin tức hay chưa\\\cline{1-1}\cline{3-6}
+    5  &   & new\_id& string &  & ID Tin tức\\\cline{1-1}\cline{3-6}
+    6  &   & content& string &  & Nội dung tin tức\\\cline{1-1}\cline{3-6}
+    7  &   & user\_id& string &  & Người đọc\\\cline{1-1}\cline{3-6}
+    8  &   & title& string &  & Tiêu đề tin tức\\\cline{1-1}\cline{3-6}
+    9  &   & updated\_at& string &  & Thời gian cập nhật mới nhất\\\cline{1-1}\cline{3-6}
+    10  &   & user\_create\_name& string &  & Người viết tin tức\\\cline{1-1}\cline{3-6}
+    \end{supertabular}
+%\end{table}
+\\
+%\begin{table}[H]
+    %\centering
+    \tablehead{%
+    \hline
+    \bfseries STT & \multicolumn{3}{c|}{\bfseries Tên biến}& \bfseries Kiểu dữ liệu &\bfseries NN &\bfseries Lưu ý\\\hline}
+    \tabletail{\hline}
+    \topcaption{api\_notifications}
+    \label{banga30}
+    \begin{supertabular}{| p{.05\textwidth} | p{.06\textwidth}| p{.17\textwidth} | p{.12\textwidth} |p{.10\textwidth} | p{.05\textwidth}| p{.28\textwidth} |  } 
+    \hline
+    \multicolumn{7}{|c|}{\bfseries Input}\\\hline
+    1  & \multicolumn{3}{c|}{access\_token}& string & 0 & Token đăng nhập\\\hline
+    2  & \multicolumn{3}{c|}{index}& string & 0 & Trang hiện tại\\\hline
+    3  & \multicolumn{3}{c|}{count}& string & 0 & Số thông báo trên một trang\\\hline
+    4  & \multicolumn{3}{c|}{is\_not\_read}& string & x & Số thông báo trên một trang\\\hline
+    \multicolumn{7}{|c|}{\bfseries Output}\\\hline
+    1  & \multicolumn{3}{c|}{code}& int &  & Mã response\\\hline
+    2  & \multicolumn{3}{c|}{message}& string &  & \\\hline
+    3  & data & & & object &  & \\\cline{1-1}\cline{3-7}
+    4  & \multirow{10}{*}{}    & denys & & array &  & Danh sách phiên đấu giá bị từ chối\\\cline{1-1}\cline{3-7}
+    5 &      &      & title & string &  & Tiêu đề phiên đấu giá\\\cline{1-1}\cline{4-7}
+    6 &      &      & start\_date & string &  & Thời gian bắt đầu\\\cline{1-1}\cline{4-7}
+    7 &      &      & end\_date & string &  & Thời gian kết thúc\\\cline{1-1}\cline{4-7}
+    8 &      &      & reason & string &  & Lý do bị từ chối\\\cline{1-1}\cline{4-7}
+    9 &      &      & updated\_at & string &  & Thời gian thông báo
+    chưa\\\cline{1-1}\cline{4-7}
+    10 &      &      & is\_read & string &  & Thông báo đã đọc hay chưa\\\cline{1-1}\cline{3-7}
+    11 &      &total\_not\_read&  & string &  & Tổng số thông báo chưa đọc\\\cline{1-1}\cline{3-7}
+    12 &      &total&  & string &  & Tổng số thông báo\\\hline
+    \end{supertabular}
+%\end{table}
+\\
+%\begin{table}[H]
+    %\centering
+    \tablehead{%
+    \hline
+    \bfseries STT & \multicolumn{3}{c|}{\bfseries Tên biến}& \bfseries Kiểu dữ liệu &\bfseries NN &\bfseries Lưu ý\\\hline}
+    \tabletail{\hline}
+    \topcaption{api\_read\_notifications}
+    \label{banga31}
+    \begin{supertabular}{| p{.05\textwidth} | p{.06\textwidth}| p{.17\textwidth} | p{.12\textwidth} |p{.10\textwidth} | p{.05\textwidth}| p{.28\textwidth} |  } 
+    \hline
+    \multicolumn{7}{|c|}{\bfseries Input}\\\hline
+    1  & \multicolumn{3}{c|}{access\_token}& string & 0 & Token đăng nhập\\\hline
+    \multicolumn{7}{|c|}{\bfseries Output}\\\hline
+    1  & \multicolumn{3}{c|}{code}& int &  & Mã response\\\hline
+    2  & \multicolumn{3}{c|}{message}& string &  & \\\hline
+    3  & data & & & object &  & \\\cline{1-1}\cline{3-7}
+    4  & \multirow{10}{*}{}    & is\_read & & array &  & Thông báo đã đọc hay chưa\\\cline{1-1}\cline{3-7}
+    5 &      &  auctions    &  & string &  & Thông tin phiên đấu giá\\\cline{1-1}\cline{4-7}
+    6 &      &      & title & string &  & Tiêu đề phiên đấu giá\\\cline{1-1}\cline{4-7}
+    7 &      &      & start\_date & string &  & Thời gian bắt đầu\\\cline{1-1}\cline{4-7}
+    8 &      &      & end\_date & string &  & Thời gian kết thúc\\\cline{1-1}\cline{4-7}
+    9 &      &      & reason & string &  & Lý do bị từ chối\\\cline{1-1}\cline{4-7}
+    10 &      &      & updated\_at & string &  & Thời gian thông báo\\\cline{1-1}\cline{3-7}
+    11 &      &  category    &  & string &  & Thông tin loại sản phẩm\\\cline{1-1}\cline{4-7}
+    12 &      &      & name & string &  & Tên loại sản phẩm\\\cline{1-1}\cline{3-7}
+    13 &      &  items    &  & string &  & Thông tin sản phẩm\\\cline{1-1}\cline{4-7}
+    14 &      &      & name & string &  & Tên sản phẩm\\\cline{1-1}\cline{4-7}
+    15 &      &      & brand & string &  & Thương hiệu\\\cline{1-1}\cline{4-7}
+    16 &      &      & series & string &  & Số series\\\cline{1-1}\cline{4-7}
+    17 &      &      & description & string &  & Mô tả\\\cline{1-1}\cline{4-7}
+    18 &      &      & starting\_price & string &  & Giá khởi điểm\\\cline{1-1}\cline{4-7}
+    19 &      &      & images & array &  & Hình ảnh\\\cline{1-1}\cline{3-7}
+    20 &      &total\_not\_read&  & string &  & Tổng số thông báo chưa đọc\\\cline{1-1}\cline{3-7}
+    21 &      &total&  & string &  & Tổng số thông báo\\\hline
+    \end{supertabular}
+%\end{table}
+\\
+%\begin{table}[H]
+    %\centering
+    \tablehead{%
+    \hline
+    \bfseries STT & \bfseries Tên biến& \bfseries Kiểu dữ liệu &\bfseries NN &\bfseries Lưu ý\\\hline}
+    \tabletail{\hline}
+    \topcaption{api\_delete\_notification}
+    \label{banga32}
+    \begin{supertabular}{| p{.05\textwidth} | p{.36\textwidth} |p{.10\textwidth} | p{.05\textwidth}| p{.33\textwidth} |  } 
+    \hline
+    \multicolumn{5}{|c|}{\bfseries Input}\\\hline
+    1  & access\_token& string & 0 & Token đăng nhập\\\hline
+    \multicolumn{5}{|c|}{\bfseries Output}\\\hline
+    1  & code& int &  & Mã response\\\hline
+    2  & message& string &  & Đã xóa thông báo\\\hline
+    3  & data& null &  & \\\hline
+    \end{supertabular}
+%\end{table}
+\\
+%\begin{table}[H]
+    %\centering
+    \tablehead{%
+    \hline
+    \bfseries STT & \multicolumn{2}{c|}{\bfseries Tên biến}& \bfseries Kiểu dữ liệu &\bfseries NN &\bfseries Lưu ý\\\hline}
+    \tabletail{\hline}
+    \topcaption{api\_slide}
+    \label{banga33}
+    \begin{supertabular}{| p{.05\textwidth} | p{.10\textwidth} | p{.26\textwidth} |p{.10\textwidth} | p{.05\textwidth}| p{.30\textwidth} |  } 
+    \hline
+    \multicolumn{6}{|c|}{\bfseries Input}\\\hline
+    1  & \multicolumn{2}{c|}{access\_token} & string & x & Token đăng nhập\\\hline
+    \multicolumn{6}{|c|}{\bfseries Output}\\\hline
+    1  & code& & int &  & Mã response\\\hline
+    2  & message& & string &  & OK\\\hline
+    3  & data& & object &  & \\\cline{1-1}\cline{3-6}
+    4  & \multirow{3}{*}{}    & image & string &  & Hình ảnh slide\\\cline{1-1}\cline{3-6}
+    5  &   & slide\_id& string &  & ID slide\\\cline{1-1}\cline{3-6}
+    \end{supertabular}
+%\end{table}
+\\
+%\begin{table}[H]
+    %\centering
+    \tablehead{%
+    \hline
+    \bfseries STT & \multicolumn{2}{c|}{\bfseries Tên biến}& \bfseries Kiểu dữ liệu &\bfseries NN &\bfseries Lưu ý\\\hline}
+    \tabletail{\hline}
+    \topcaption{api\_search}
+    \label{banga34}
+    \begin{supertabular}{| p{.05\textwidth} | p{.18\textwidth} | p{.18\textwidth} |p{.10\textwidth} | p{.05\textwidth}| p{.29\textwidth} |  } 
+    \hline
+    \multicolumn{6}{|c|}{\bfseries Input}\\\hline
+    1  & \multicolumn{2}{c|}{access\_token} & string & x & Token đăng nhập\\\hline
+    2  & \multicolumn{2}{c|}{type} & string & 0 & Phân loại tìm kiếm\\\hline
+    3  & \multicolumn{2}{c|}{key} & string & 0 & Từ khòa tìm kiếm\\\hline
+    \multicolumn{6}{|c|}{\bfseries Output}\\\hline
+    1  & code& & int &  & Mã response\\\hline
+    2  & message& & string &  & OK\\\hline
+    3  & data& & object &  & \\\cline{1-1}\cline{3-6}
+    4  & \multirow{3}{*}{}    & id & string &  & id phiên đấu giá\\\cline{1-1}\cline{3-6}
+    5  &   & name& string &  & Tên phiên đấu giá tìm kiếm\\\cline{1-1}\cline{3-6}
+    6  &   & key& string &  & Từ khóa tìm kiếm\\\cline{1-1}\cline{3-6}
+    \end{supertabular}
+%\end{table}
+\\
+%\begin{table}[H]
+    %\centering
+    \tablehead{%
+    \hline
+    \bfseries STT & \multicolumn{3}{c|}{\bfseries Tên biến}& \bfseries Kiểu dữ liệu &\bfseries NN &\bfseries Lưu ý\\\hline}
+    \tabletail{\hline}
+    \topcaption{api\_list\_chat}
+    \label{banga35}
+    \begin{supertabular}{| p{.05\textwidth} | p{.05\textwidth}| p{.21\textwidth} | p{.09\textwidth} |p{.10\textwidth} | p{.05\textwidth}| p{.28\textwidth} |  } 
+    \hline
+    \multicolumn{7}{|c|}{\bfseries Input}\\\hline
+    1  & \multicolumn{3}{c|}{access\_token}& string & 0 & Token đăng nhập\\\hline
+    \multicolumn{7}{|c|}{\bfseries Output}\\\hline
+    1  & \multicolumn{3}{c|}{code}& int &  & Mã response\\\hline
+    2  & \multicolumn{3}{c|}{message}& string &  & \\\hline
+    3  & data & & & object &  & \\\cline{1-1}\cline{3-7}
+    4  & \multirow{10}{*}{}    & chat\_id & & string &  & ID cuộc nói chuyện\\\cline{1-1}\cline{3-7}
+    5 &      &  user\_send\_id    &  & string &  & ID người gửi tin nhắn\\\cline{1-1}\cline{3-7}
+    6 &      &  user\_receive\_info   &  & object &  & Thông tin người nhận\\\cline{1-1}\cline{4-7}
+    7 &      &      & user\_id & string &  & ID người nhận\\\cline{1-1}\cline{4-7}
+    8 &      &      & name & string &  & Tên người nhận\\\cline{1-1}\cline{4-7}
+    9 &      &      & avatar & string &  & Avatar người nhận\\\cline{1-1}\cline{4-7}
+    10 &      &      & role & string &  & Vai trò người nhận\\\cline{1-1}\cline{4-7}
+    \end{supertabular}
+%\end{table}
+\\
+%\begin{table}[H]
+    %\centering
+    \tablehead{%
+    \hline
+    \bfseries STT & \multicolumn{2}{c|}{\bfseries Tên biến}& \bfseries Kiểu dữ liệu &\bfseries NN &\bfseries Lưu ý\\\hline}
+    \tabletail{\hline}
+    \topcaption{api\_create\_chat}
+    \label{banga36}
+    \begin{supertabular}{| p{.05\textwidth} | p{.10\textwidth} | p{.19\textwidth} |p{.10\textwidth} | p{.05\textwidth}| p{.36\textwidth} |  } 
+    \hline
+    \multicolumn{6}{|c|}{\bfseries Input}\\\hline
+    1  & \multicolumn{2}{c|}{access\_token} & string & x & Token đăng nhập\\\hline
+    \multicolumn{6}{|c|}{\bfseries Output}\\\hline
+    1  & code& & int &  & Mã response\\\hline
+    2  & message& & string &  & OK\\\hline
+    3  & data& & object &  & \\\cline{1-1}\cline{3-6}
+    4  & \multirow{3}{*}{}    & chat\_id & string &  & ID cuộc nói chuyện\\\cline{1-1}\cline{3-6}
+    5  &   & user\_send\_id& string &  & ID người gửi\\\cline{1-1}\cline{3-6}
+    6  &   & user\_receive\_id& string &  & ID người nhận\\\cline{1-1}\cline{3-6}
+    7  &   & created\_at & string &  & Thời gian tạo cuộc nói chuyện\\\cline{1-1}\cline{3-6}
+    \end{supertabular}
+%\end{table}
+\\
+%\begin{table}[H]
+    %\centering
+    \tablehead{%
+    \hline
+    \bfseries STT & \multicolumn{3}{c|}{\bfseries Tên biến}& \bfseries Kiểu dữ liệu &\bfseries NN &\bfseries Lưu ý\\\hline}
+    \tabletail{\hline}
+    \topcaption{api\_create\_message}
+    \label{banga37}
+    \begin{supertabular}{| p{.05\textwidth} | p{.05\textwidth}| p{.21\textwidth} | p{.09\textwidth} |p{.10\textwidth} | p{.05\textwidth}| p{.28\textwidth} |  } 
+    \hline
+    \multicolumn{7}{|c|}{\bfseries Input}\\\hline
+    1  & \multicolumn{3}{c|}{access\_token}& string & 0 & Token đăng nhập\\\hline
+    2  & \multicolumn{3}{c|}{content}& string & 0 & Nội dung tin nhắn\\\hline
+    \multicolumn{7}{|c|}{\bfseries Output}\\\hline
+    1  & \multicolumn{3}{c|}{code}& int &  & Mã response\\\hline
+    2  & \multicolumn{3}{c|}{message}& string &  & \\\hline
+    3  & data & & & object &  & \\\cline{1-1}\cline{3-7}
+    4  & \multirow{10}{*}{}    & chat\_id & & string &  & ID cuộc nói chuyện\\\cline{1-1}\cline{3-7}
+    5 &      & content   &  & object &  & Nội dung tin nhắn\\\cline{1-1}\cline{3-7}
+    6 &      & created\_at   &  & object &  & Thời gian gửi tin nhắn\\\cline{1-1}\cline{3-7}
+    7  & \multirow{10}{*}{}    & user\_send\_info & & string &  & Thông tin người gửi\\\cline{1-1}\cline{4-7}
+    8 &      &      & user\_id & string &  & ID người gửi tin nhắn\\\cline{1-1}\cline{4-7}
+    9 &      &      & name & string &  & Tên người gửi\\\cline{1-1}\cline{4-7}
+    10 &      &      & avatar & string &  & Avatar người gửi\\\cline{1-1}\cline{4-7}
+    11 &      &      & role & string &  & Vai trò người gửi\\\cline{1-1}\cline{4-7}
+    \end{supertabular}
+%\end{table}
+\\
+%\begin{table}[H]
+    %\centering
+    \tablehead{%
+    \hline
+    \bfseries STT & \multicolumn{3}{c|}{\bfseries Tên biến}& \bfseries Kiểu dữ liệu &\bfseries NN &\bfseries Lưu ý\\\hline}
+    \tabletail{\hline}
+    \topcaption{api\_list\_message}
+    \label{banga38}
+    \begin{supertabular}{| p{.05\textwidth} | p{.05\textwidth}| p{.21\textwidth} | p{.09\textwidth} |p{.10\textwidth} | p{.05\textwidth}| p{.28\textwidth} |  } 
+    \hline
+    \multicolumn{7}{|c|}{\bfseries Input}\\\hline
+    1  & \multicolumn{3}{c|}{access\_token}& string & 0 & Token đăng nhập\\\hline
+    \multicolumn{7}{|c|}{\bfseries Output}\\\hline
+    1  & \multicolumn{3}{c|}{code}& int &  & Mã response\\\hline
+    2  & \multicolumn{3}{c|}{message}& string &  & \\\hline
+    3  & data & & & array &  & \\\cline{1-1}\cline{3-7}
+    4  & \multirow{10}{*}{}    & content & & string &  & Nội dung tin nhắn\\\cline{1-1}\cline{3-7}
+    5 &      & created\_at   &  & object &  & Thời gian gửi tin nhắn\\\cline{1-1}\cline{3-7}
+    6  & \multirow{10}{*}{}    & user\_send\_info & & string &  & Thông tin người gửi\\\cline{1-1}\cline{4-7}
+    7 &      &      & user\_id & string &  & ID người gửi tin nhắn\\\cline{1-1}\cline{4-7}
+    8 &      &      & name & string &  & Tên người gửi\\\cline{1-1}\cline{4-7}
+    9 &      &      & avatar & string &  & Avatar người gửi\\\cline{1-1}\cline{4-7}
+    10 &      &      & role & string &  & Vai trò người gửi\\\cline{1-1}\cline{4-7}
+    \end{supertabular}
+%\end{table}
+\\
+%\begin{table}[H]
+    %\centering
+    \tablehead{%
+    \hline
+    \bfseries STT & \bfseries Tên biến& \bfseries Kiểu dữ liệu &\bfseries NN &\bfseries Lưu ý\\\hline}
+    \tabletail{\hline}
+    \topcaption{api\_update\_status}
+    \label{banga39}
+    \begin{supertabular}{| p{.05\textwidth} | p{.30\textwidth}| p{.10\textwidth} | p{.05\textwidth}| p{.40\textwidth} |  } 
+    \hline
+    \multicolumn{5}{|c|}{\bfseries Input}\\\hline
+    1  & access\_token& string & x & Token đăng nhập\\\hline
+    \multicolumn{5}{|c|}{\bfseries Output}\\\hline
+    1  & code& int &  & Mã response\\\hline
+    2  & message& string &  & Đã cập nhật trạng thái\\\hline
+    3  & data &null & & \\\hline
+    \end{supertabular}
+%\end{table}
+\end{document}
