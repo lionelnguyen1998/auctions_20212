@@ -10,26 +10,29 @@ Website đấu giá trực tuyến được xây dựng dựa theo mô hình MVC
     \caption{Mô hình kiến trúc MVC}
     \label{fig:Fig41}
 \end{figure}
-Mô hình MVC là mẫu kiến trúc phân chia ứng dụng thành 3 thành phần chính: Model, View, Controller. Mỗi thành phần được xây dựng để xử lý các tác vụ khác nhau của một ứng dụng.
+Mô hình MVC là mẫu kiến trúc phân chia ứng dụng thành 3 thành phần chính: Model, View, Controller. Mỗi thành phần được xây dựng để xử lý các tác vụ khác nhau của một ứng dụng\cite{MVC2}.
 \begin{itemize}
-    \item Lớp dữ liệu (Model) chịu trách nhiệm quản lý dữ liệu của ứng dụng, tương tác với hệ quản trị cơ sở dữ liệu. Lớp dữ liệu này không có bất kỳ liên quan logic nào đến việc hiển thị dữ liệu trên màn hình
+    \item Lớp dữ liệu (Model) chịu trách nhiệm quản lý dữ liệu của ứng dụng, tương tác với hệ quản trị cơ sở dữ liệu. Lớp dữ liệu này không có bất kỳ liên quan logic nào đến việc hiển thị dữ liệu trên màn hình.
     \item Lớp điều khiển ( Controller) đứng giữa lớp dữ liệu và lớp giao diện. Khi người dùng tương tác trên màn hình (View) thì phía lớp điều khiển sẽ nhận các yêu cầu đó, rồi gửi đến Model, sau khi Model xử lý logic xong, thì Controller nhận dữ liệu đó và trả ra màn hình View cho người dùng.
     \item Lớp giao diện (View) là nơi mà người dùng tương tác trực tiếp. Nơi nhận yêu cầu đầu vào của người dùng rồi gửi đến lớp điều khiển (Controller), sau đó nhận lại dữ liệu từ lớp điều khiển và hiển thị ra màn hình người dùng.
 \end{itemize}
+\newpage
 Sau khi kết hợp giữa mô hình kiến trúc MVC và mô hình Client-Server thì website đấu giá trực tuyến sẽ có mô tả như hình dưới. 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=11.4cm,height=9.22cm]{Hinhve/server.png}
+    \includegraphics[width=0.75\linewidth,height=9.22cm]{Hinhve/server.png}
     \caption{Mô hình hệ thống dựa theo kiến trúc MVC}
     \label{fig:Fig42}
 \end{figure}
 Hệ thống được mô tả dựa trên kiến trúc MVC có thêm thành phần Routing có vai trò ánh xạ các request từ phía client đến controller.
+\newpage
 \subsection{Thiết kế tổng quan}
-Mô tả chi tiết các gói trong biểu đồ trên: 
-Tầng giao diện cho ứng dụng web ( FontEndLayer)
+Mô tả chi tiết các gói trong biểu đồ trên:
+
+Tầng giao diện cho ứng dụng web (FontEndLayer)
 \begin{figure}[H]
     \centering
-    \includegraphics[width=11.4cm,height=12.92cm]{Hinhve/gói tổng quan.png}
+    \includegraphics[width=11.4cm,height=16.7cm]{Hinhve/thiet_ke_tong_quan.png}
     \caption{Biểu đồ gói tổng quan}
     \label{fig:Fig43}
 \end{figure}
@@ -55,7 +58,7 @@ Tầng ứng dụng server (Server Layer)
 } \mbox{}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=11.4cm,height=6.34cm]{Hinhve/fontendlayer.png}
+    \includegraphics[width=0.75\linewidth,height=10.87cm]{Hinhve/FontEndLayer752.png}
     \caption{Thiết kế chi tiết gói ứng dụng web}
     \label{fig:Fig44}
 \end{figure}
@@ -105,11 +108,11 @@ Gói socket được gọi khi người dùng truy cập vào ứng dụng chat.
 \subsubsection{Thiết kế chi tiết gói cho server (ServerLayer)}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=11.4cm,height=8.0cm]{Hinhve/serverlayer.png}
+    \includegraphics[width=0.75\linewidth,height=11.9cm]{Hinhve/ServerLayer75.png}
     \caption{Thiết kế chi tiết gói serverlayer}
     \label{fig:Fig45}
 \end{figure}
-Sau khi phía client gọi các restful api, hệ thống sẽ gửi request về cho controller phía trong gói Server Layer. Sau khi nhận được lời gọi thì phía controller sẽ gọi đến middleware để kiểm tra người dùng truy cập có đáp ứng điều kiện để thông qua không. Nếu thông qua middleware, thì dựa vào request được gửi tới, controller sẽ vào các model, service để lấy dữ liệu tương ứng rồi trả về cho client.\\ 
+Sau khi phía client gọi các Restful API, hệ thống sẽ gửi request về cho controller phía trong gói Server Layer. Sau khi nhận được lời gọi thì phía controller sẽ gọi đến middleware để kiểm tra người dùng truy cập có đáp ứng điều kiện để thông qua không. Nếu thông qua middleware, thì dựa vào request được gửi tới, controller sẽ vào các model, service để lấy dữ liệu tương ứng rồi trả về cho client.\\ 
 Sau đây là mô tả chi tiết các class có trong ServerLayer:\\
 Gói routes có nhiệm vụ xử lý phân luồng cho các request gửi đến hệ thống
 \begin{itemize}
@@ -180,7 +183,7 @@ Trong phần này em sẽ trình bày về các nguyên tắc chung khi thiết 
         1 & Kích thước màn hình &
             \begin{tabular}{p{.45\textwidth}}
                 Máy tính bàn : \\
-                (Desktops -Medium devices): >= 992px\\
+                (Desktops - Medium devices): >= 992px\\
                 Máy tính lớn : \\
                 (Large Desktops - Large devices) >= 1200px
             \end{tabular}\\\hline
@@ -213,7 +216,7 @@ Trong phần này em sẽ trình bày về các nguyên tắc chung khi thiết 
         1 & Kích thước màn hình &
             \begin{tabular}{p{.45\textwidth}}
                 Máy tính bàn\\
-                (Desktops -Medium devices): >= 992px\\
+                (Desktops - Medium devices): >= 992px\\
                 Máy tính lớn\\
                 (Large Desktops - Large devices)\\ 
                 >= 1200px\\
@@ -242,58 +245,62 @@ Trong phần này em sẽ trình bày về các nguyên tắc chung khi thiết 
 \subsubsection{Nguyên tắc thiết kế chung}
 Mục tiêu của website là đáp ứng được yêu cầu dễ sử dụng, thân thiện với người dùng. Vì vậy đồ án phải đảm bảo khi người dùng nhìn vào sẽ biết chức năng của từng nút, nắm cơ bản luồng hoạt động của ứng dụng. Người dùng có thể dự đoán được nếu nhấn nút này hay bỏ qua trường này thì sẽ có điều gì xảy ra tiếp theo. Ví dụ ở các form đăng ký thì những trường bắt buộc sẽ được đánh dấu sao màu đỏ, thông báo đầy đủ lỗi khi người dùng nhập thông tin không phù hợp, các trường cần bảo mật thì ẩn thông tin khi nhập xong. Đặc biệt khi người dùng muốn xóa gì đó thì cần phải xác nhận lại thông tin, đảm bảo hành vi không phải là vô tình. Sau khi người dùng thực hiện xong các thao tác thì thông báo bằng các toast màu sắc phù hợp để dễ dàng nhận biết là tác vụ đã thành công hay chưa. 
 
-Ngoài ra để đảm bảo người dùng không cảm thấy khó chịu khi sử dụng website thì màu sắc của giao diện cũng cần được thống nhất, chọn tông màu sáng, nhẹ nhàng, không cho quá nhiều màu sắc sặc sỡ. Với các thông báo thì cần dùng màu sắc đặc trưng hay được dùng nhiều như tác vụ thành công màu \#28A475 (success), lỗi màu \#DC3545 (error), cảnh báo màu \#FFC107 (warning). Đối với các tác vụ mà có thể click chuột được thì khi di chuyển chuột vào sẽ phải thay đổi màu sắc để người dùng dễ nhận biết. Với các hộp thông báo thì hiển thị giữa màn hình, các thông tin bên dưới làm mờ để nổi bật hộp thông báo.
+Ngoài ra để đảm bảo người dùng không cảm thấy khó chịu khi sử dụng website thì màu sắc của giao diện cũng cần được thống nhất, chọn tông màu sáng, nhẹ nhàng, không cho quá nhiều màu sắc sặc sỡ. Với các thông báo thì cần dùng màu sắc đặc trưng hay được dùng nhiều như tác vụ thành công màu \#28A475 (\textbf{success}), lỗi màu \#DC3545 (\textbf{error}), cảnh báo màu \#FFC107 (\textbf{warning}). Đối với các tác vụ mà có thể click chuột được thì khi di chuyển chuột vào sẽ phải thay đổi màu sắc để người dùng dễ nhận biết. Với các hộp thông báo thì hiển thị giữa màn hình, các thông tin bên dưới làm mờ để nổi bật hộp thông báo.
 \subsubsection{Thiết kế sơ đồ hệ thống}
 Sau đây đồ án sẽ trình bày sơ đồ màn hình của hệ thống phía Người dùng và hệ thống quản trị phía Quản trị viên.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=11.4cm,height=4.65cm]{Hinhve/clientpage.png}
+    \includegraphics[width=0.75\linewidth,height=4.65cm]{Hinhve/clientpage.png}
     \caption{Sơ đồ hệ thống phía Người dùng}
     \label{fig:Fig46}
 \end{figure}
 Sơ đồ trên thể hiện phía giao diện Người dùng có 5 giao diện chính, i) Bán hàng: khi người dùng muốn tạo một phiên đấu giá thì sẽ thực hiện ở màn hình này, ii) Bài viết : Hiển thị những bài viết, tin tức mà phía Quản trị viên thêm vào, iii) Trang chủ:  Hiển thị danh sách các phiên đấu giá của toàn hệ thống, iv) Liên hệ: khi người dùng muốn liên hệ với Quản trị viên qua email. Cuối cùng là Phiên đấu giá bao gồm chi tiết phiên đấu giá và danh sách các bình luận, trả giá (bid), đánh giá của người dùng.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=11.4cm,height=4.54cm]{Hinhve/adminpage.png}
+    \includegraphics[width=0.75\linewidth,height=4.54cm]{Hinhve/adminpage.png}
     \caption{Sơ đồ hệ thống phía Quản trị viên}
     \label{fig:Fig47}
 \end{figure}
-Phía Quản trị viên có 6 giao diện chính trang chủ, quản lý phiên đấu giá, người dùng, sản phẩm, tin tức và slide
+Phía Quản trị viên có 6 giao diện chính trang chủ, quản lý phiên đấu giá, người dùng, sản phẩm, tin tức và slide.
+\newpage
 \subsubsection{Thiết kế phác thảo màn hình chính}
 Sau đây là mockup một số màn hình chính i) giao diện trang chủ, ii) giao diện tạo phiên đấu giá, iii) giao diện thêm sản phẩm cho phiên đấu giá, iv) giao diện chi tiết phiên đấu giá
 \begin{figure}[H]
     \centering
-    \includegraphics[width=7.87cm,height=9.07cm]{Hinhve/homepage.png}
+    \includegraphics[width=10.1cm,height=11.64cm]{Hinhve/homepage.png}
     \caption{Mockup màn hình trang chủ}
     \label{fig:Fig48}
 \end{figure}
 Hình \ref{fig:Fig48} mô tả mockup giao diện màn hình trang chủ phía Người dùng. Phần header bao gồm tên tài khoản đang đăng nhập, icon chuyển đổi giữa tiếng Việt và Tiếng Nhật; tiếp theo là thanh navbar chứa tiêu đề của các page chính và icon liên quan (icon tim liên kết đến danh sách phiên đấu giá yêu thích, icon chuông liên kết đến danh sách thông báo, icon A liên kết đến trang cá nhân của người dùng, icon tin nhắn liên kết đến ứng dụng chat realtime). Tiếp đến website hiển thị nhóm danh mục loại sản phẩm, thanh tìm kiếm, slide hiển thị trên trang chủ, số điện thoại và thời gian mà admin có thể hỗ trợ. Trang chủ cũng hiển thị danh sách toàn bộ phiên đấu giá, loại sản phẩm hiện có trên toàn hệ thống. Phần footer chứa thông tin, địa chỉ, các tài khoản xã hội của website.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=11.43cm,height=9.87cm]{Hinhve/createauction.png}
+    \includegraphics[width=0.75\linewidth,height=9.7cm]{Hinhve/createauction.png}
     \caption{Mockup màn hình tạo phiên đấu giá}
     \label{fig:Fig49}
 \end{figure}
 Hình \ref{fig:Fig49} mô tả mockup giao diện tạo một phiên đấu giá. Những trường nào yêu cầu phải nhập sẽ có hình ngôi sao màu đỏ để người dùng dễ nhận biết.
+\newpage
 \begin{figure}[H]
     \centering
-    \includegraphics[width=10.04cm,height=11.76cm]{Hinhve/itemcreate.png}
+    \includegraphics[width=0.75\linewidth,height=13.08cm]{Hinhve/itemcreate.png}
     \caption{Mockup màn hình Tạo sản phẩm cho phiên đấu giá}
     \label{fig:Fig410}
 \end{figure}
 Hình \ref{fig:Fig410} mô tả mockup giao diện màn hình tạo sản phẩm cho một phiên đấu giá. Phía trên cùng là thông tin phiên đấu giá mà người dùng đang thêm sản phẩm. phía dưới là form để điền các thông tin của sản phẩm cần thêm. Đồng tiền được quy định chung cho website là \$
+\newpage
 \begin{figure}[H]
     \centering
-    \includegraphics[width=10.04cm,height=11.76cm]{Hinhve/detailitem.png}
+    \includegraphics[width=0.75\linewidth,height=13.1cm]{Hinhve/detailitem.png}
     \caption{Mockup màn hình Chi tiết phiên đấu giá}
     \label{fig:Fig411}
 \end{figure}
 Hình \ref{fig:Fig411} mô tả giao diện của màn hình chi tiết phiên đấu giá, bao gồm các hình ảnh, thông tin của sản phẩm, avatar, tên của người tạo phiên đấu giá. Phía dưới là các tab để trả giá, bình luận, đánh giá sản phẩm. 
+\newpage
 \subsection{Thiết kế lớp}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=11.4cm,height=9.54cm]{Hinhve/detailclass.png}
-    \caption{Thiết kế lớp quản lý phiên đấu giá ( tạo, chỉnh sửa, xóa, cập nhật trạng thái, giao hàng, đánh giá)}
+    \includegraphics[width=0.75\linewidth,height=13.74cm]{Hinhve/Thiết kế chi tiết75.png}
+    \caption{Thiết kế lớp quản lý phiên đấu giá}%( tạo, chỉnh sửa, xóa, cập nhật trạng thái, giao hàng, đánh giá)
     \label{fig:Fig412}
 \end{figure}
 
@@ -439,7 +446,7 @@ Phần này sẽ liệt kê danh sách các API sử dụng trong hệ thống.
 \subsection{Thiết kế cơ sở dữ liệu}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=11.4cm,height=11.0cm]{Hinhve/database.png}
+    \includegraphics[width=0.75\linewidth,height=18cm]{Hinhve/err2.png}
     \caption{Sơ đồ thực thể liên kết}
     \label{fig:Fig413}
 \end{figure}
@@ -452,7 +459,7 @@ Hình \ref{fig:Fig413} là sơ đồ thực thể liên kết cho cơ sở dữ 
     \tabletail{\hline}
     \topcaption{Ý nghĩa các thực thể}
     \label{bang48}
-    \begin{supertabular}{| p{.30\textwidth} | p{.60\textwidth} |} 
+    \begin{supertabular}{| p{.30\textwidth} | p{.63\textwidth} |} 
     \hline
         auctions & Phiên đấu giá\\\hline
         users & Tài khoản người dùng\\\hline
@@ -498,7 +505,7 @@ Hình \ref{fig:Fig413} là sơ đồ thực thể liên kết cho cơ sở dữ 
     \end{supertabular}
 %\end{table}
 \subsection{Kết quả đạt được}
-Từ những tìm hiểu và phân tích trên em đã xây dựng Website đấu giá trực tuyến với các module chính: (i) Tìm kiếm, (ii) xem chi tiết phiên đấu giá, (iii) tạo phiên đấu giá, (iv) tham gia phiên đấu giá ( trả giá, bình luận, đánh giá), (v) nhắn tin, (vi) yêu thích phiên đấu giá, (vii) xem tin tức, (viii) xem thông báo từ chối phiên đấu giá. Về hệ thống quản lý phía Quản trị viên là quản lý phê duyệt phiên đấu giá, quản lý việc thêm sửa xóa loại sản phẩm, thương hiệu, slide, tin tức.
+Từ những tìm hiểu và phân tích trên em đã xây dựng Website đấu giá trực tuyến với các module chính: (i) Tìm kiếm, (ii) xem chi tiết phiên đấu giá, (iii) tạo phiên đấu giá, (iv) tham gia phiên đấu giá (trả giá, bình luận, đánh giá), (v) nhắn tin, (vi) yêu thích phiên đấu giá, (vii) xem tin tức, (viii) xem thông báo từ chối phiên đấu giá. Về hệ thống quản lý phía Quản trị viên là quản lý phê duyệt phiên đấu giá, quản lý việc thêm sửa xóa loại sản phẩm, thương hiệu, slide, tin tức.
 %\begin{table}[H]
     %\centering
     \tablehead{%
@@ -551,26 +558,26 @@ Từ những tìm hiểu và phân tích trên em đã xây dựng Website đấ
 \subsection{Minh họa các chức năng chính}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=11.4cm,height=4.95cm]{Hinhve/createauctiondemo.png}
+    \includegraphics[width=0.75\linewidth,height=4.86cm]{Hinhve/createauctiondemo.png}
     \caption{Giao diện tạo phiên đấu giá}
     \label{fig:Fig414}
 \end{figure}
 Hình\ref{fig:Fig414} mô tả màn hình tạo phiên đấu giá. Người dùng đã có tài khoản thì có quyền được tạo phiên đấu giá. Người dùng nhập các thông tin cần thiết trên màn hình, những trường nào có dấu sao màu đỏ là những trường bắt buộc phải nhập. Nếu người dùng không nhập hay nhập sai định dạng thông tin thì hệ thống sẽ báo lỗi tương ứng phía dưới ô đó. 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=11.4cm,height=6.28cm]{Hinhve/createitem1demo.png}
+    \includegraphics[width=0.75\linewidth,height=6.16cm]{Hinhve/createitem1demo.png}
     \label{fig:Fig4151}
 \end{figure}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=11.4cm,height=6.32cm]{Hinhve/createitem2demo.png}
+    \includegraphics[width=0.75\linewidth,height=6.21cm]{Hinhve/createitem2demo.png}
     \caption{Giao diện tạo sản phẩm cho phiên đấu giá.}
     \label{fig:Fig415}
 \end{figure}
 Hình \ref{fig:Fig415} mô tả giao diện tạo sản phẩm cho phiên đấu giá. Người dùng sau khi tạo phiên đấu giá thì có thể thêm sản phẩm vào phiên đấu giá đó. Thông tin của phiên đấu giá được để lên đầu form tạo sản phẩm. Người dùng nhập các thông tin sản phẩm cần thiết. Nếu không nhập hay nhập sai thông tin thì hệ thống sẽ báo lỗi phía dưới trường đó.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=11.4cm,height=6.32cm]{Hinhve/auctionwait.png}
+    \includegraphics[width=0.75\linewidth,height=6.21cm]{Hinhve/auctionwait.png}
     \caption{Giao diện phiên đấu giá vừa tạo đang chờ duyệt.}
     \label{fig:Fig416}
 \end{figure}
@@ -578,35 +585,35 @@ Hình \ref{fig:Fig416} mô tả giao diện phiên đấu giá vừa tạo đang
 Trong trường hợp Người dùng tạo phiên đấu giá mà chưa thêm sản phẩm thì hệ thống hiển thị button Thêm sản phẩm, còn nếu đã Thêm sản phẩm rồi màn hình hiển thị các button chỉnh sửa, xóa phiên đấu giá đó. 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=11.4cm,height=6.36cm]{Hinhve/listauctions.png}
+    \includegraphics[width=0.75\linewidth,height=6.24cm]{Hinhve/listauctions.png}
     \caption{Giao diện danh sách phiên đấu giá toàn hệ thống}
     \label{fig:Fig417}
 \end{figure}
 Hình \ref{fig:Fig417} mô tả giao diện danh sách phiên đấu giá trên toàn hệ thống. Màn hình hiển thị các trạng thái, tổng số phiên đấu giá ở trạng thái đó, tên của phiên đấu giá, thời gian bắt đầu, thời gian kết thúc. Với các phiên đấu giá đang diễn ra, đã kết thúc sẽ hiển thị thời gian kết thúc, còn riêng đối với phiên đấu giá sắp diễn ra thì hiển thị thời gian bắt đầu. Màu sắc của các label được hiển thị theo trạng thái của phiên đấu giá đó. Hình ảnh đại diện là hình ảnh của loại sản phẩm thuộc phiên đấu giá đó. Mỗi trang có thể chọn hiển thị 4, 8, 12, 24 phiên đấu giá. Tại đây cũng có thể tìm kiếm phiên đấu giá theo tên, ngày giờ. 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=11.4cm,height=6.36cm]{Hinhve/auctionactive.png}
+    \includegraphics[width=0.75\linewidth,height=6.24cm]{Hinhve/auctionactive.png}
     \caption{Giao diện chi tiết phiên đấu giá đang diễn ra}
     \label{fig:Fig418}
 \end{figure}
 Hình \ref{fig:Fig418} mô tả giao diện chi tiết phiên đấu giá đang diễn ra. Giao diện này sẽ hiển thị tên phiên đấu giá ở trên cùng, tiếp đến là thông tin người bán, thông tin sản phẩm, trả giá cao nhất hiện tại, các hình ảnh của sản phẩm và icon trái tim để biết người dùng có yêu thích phiên đấu giá này không.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=11.4cm,height=6.20cm]{Hinhve/commentbid.png}
+    \includegraphics[width=0.75\linewidth,height=6.1cm]{Hinhve/commentbid.png}
     \caption{Giao diện các tab trả giá, bình luận, đánh giá của phiên đấu giá.}
     \label{fig:Fig419}
 \end{figure}
 Hình \ref{fig:Fig419} mô tả giao diện các tab trả giá, bình luận, đánh giá của phiên đánh giá. Giao diện này sẽ hiển thị người thực hiện hành động, nội dung hành động, thời gian tạo và tổng số lượt trả giá, bình luận hay đánh giá đang có của phiên đấu giá. 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=11.4cm,height=6.06cm]{Hinhve/jp.png}
+    \includegraphics[width=0.75\linewidth,height=5.95cm]{Hinhve/vietnamese.png}
     \caption{Giao diện khi sử dụng ngôn ngữ là Tiếng Việt}
     \label{fig:Fig420}
 \end{figure}
 Hình \ref{fig:Fig420} mô tả giao diện khi sử dụng ngôn ngữ tiếng Việt. Khi người dùng chọn vào lá cờ Việt Nam thì ngôn ngữ trên hệ thống chuyển toàn bộ qua tiếng Việt. Tuy nhiên hiện tại hệ thống chỉ chuyển đổi những tiêu đề đã có sẵn trong hệ thống, còn thông tin người dùng nhập bằng ngôn ngữ nào thì vẫn giữ nguyên.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=11.4cm,height=6.06cm]{Hinhve/jp.png}
+    \includegraphics[width=0.75\linewidth,height=5.95cm]{Hinhve/jp.png}
     \caption{Giao diện khi chuyển ngôn ngữ qua tiếng Nhật}
     \label{fig:Fig421}
 \end{figure}

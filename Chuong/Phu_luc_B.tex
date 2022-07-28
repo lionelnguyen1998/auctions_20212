@@ -2,6 +2,11 @@
 \begin{document}
 Do đồ án không đủ không gian để trình bày chi tiết các API được sử dụng trong website đấu giá trực tuyến, nên phần này em sẽ mô tả chi tiết API. 
 
+Chú thích: 
+\begin{itemize}
+    \item nullable: x
+    \item not null: 0
+\end{itemize}
 %\begin{table}[H]
     %\centering
     \tablehead{%
@@ -13,7 +18,7 @@ Do đồ án không đủ không gian để trình bày chi tiết các API đư
     \begin{supertabular}{| p{.10\textwidth} | p{.30\textwidth} | p{.50\textwidth} |} 
     \hline
         1000 & OK & Thành công\\\hline
-        1001 &  & Lỗi khi validate\\\hline
+        1001 &  & Lỗi khi validate\\\cline{2-3}
              & 7000 & Yêu cầu nhập \\\cline{2-3}
              & 7001 & Tối đa 255 ký tự \\\cline{2-3}
              & 7002 & Email không đúng định dạng \\\cline{2-3}
@@ -111,7 +116,7 @@ Do đồ án không đủ không gian để trình bày chi tiết các API đư
     \end{supertabular}
 %\end{table}
 \\
-
+\newpage
 Chỉnh sửa tài khoản
 %\begin{table}[H]
     %\centering
@@ -143,6 +148,8 @@ Chỉnh sửa tài khoản
     \end{supertabular}
 %\end{table}
 \\
+
+Thay đổi mật khẩu
 %\begin{table}[H]
     %\centering
     \tablehead{%
@@ -165,6 +172,8 @@ Chỉnh sửa tài khoản
     \end{supertabular}
 %\end{table}
 \\
+
+Đăng xuất tài khoản
 %\begin{table}[H]
     %\centering
     \tablehead{%
@@ -184,6 +193,8 @@ Chỉnh sửa tài khoản
     \end{supertabular}
 %\end{table}
 \\
+
+Thông tin tài khoản
 %\begin{table}[H]
     %\centering
     \tablehead{%
@@ -209,6 +220,8 @@ Chỉnh sửa tài khoản
     \end{supertabular}
 %\end{table}
 \\
+\newpage
+Danh sách phiên đấu giá
 %\begin{table}[H]
     %\centering
     \tablehead{%
@@ -217,7 +230,7 @@ Chỉnh sửa tài khoản
     \tabletail{\hline}
     \topcaption{api\_list\_auctions}
     \label{banga8}
-    \begin{supertabular}{| p{.05\textwidth} | p{.10\textwidth} | p{.10\textwidth}| p{.10\textwidth}| p{.10\textwidth} |p{.10\textwidth} | p{.05\textwidth}| p{.20\textwidth} |  } 
+    \begin{supertabular}{| p{.05\textwidth} | p{.10\textwidth} | p{.10\textwidth}| p{.12\textwidth}| p{.08\textwidth} |p{.10\textwidth} | p{.05\textwidth}| p{.20\textwidth} |  } 
     \hline
     \multicolumn{8}{|c|}{\bfseries Input}\\\hline
     1  & \multicolumn{4}{c|}{access\_token} & string & x & Token đăng nhập\\\hline
@@ -225,14 +238,14 @@ Chỉnh sửa tài khoản
     3  & \multicolumn{4}{c|}{count} & string & 0 & Số sản phẩm trên một trang\\\hline
     4  & \multicolumn{4}{c|}{user\_id} & string & x & Danh sách phiên đấu giá theo user\_id\\\hline
     5  & \multicolumn{4}{c|}{type} & string & x & Danh sách phiên đấu giá theo nhóm loại sản phẩm\\\hline
-    6  & category\_id & & & & string & x & Danh sách phiên đấu giá theo loại sản phẩm\\\hline
+    6  & \multicolumn{4}{c|}{category\_id} & string & x & Danh sách phiên đấu giá theo loại sản phẩm\\\hline
     \multicolumn{8}{|c|}{\bfseries Output}\\\hline
     1  & code& & & & int &  & Mã response\\\hline
     2  & message& & & & string &  & OK\\\hline
     3  & data& & & &object &  & \\\cline{1-1}\cline{3-8}
     4  & \multirow{23}{*}{} & auctions &  &  & Array & & Dánh sách phiên đấu giá\\\cline{1-1}\cline{4-8}
-    5  &  & \multirow{10}{*}{} & auction\_id &  & string & & ID phiên đấu giá\\\cline{1-1}\cline{4-8}
-    6  &  &  & selling\_user\_id &  & string & & Người tạo phiên đấu giá\\\cline{1-1}\cline{4-8}
+    5  &  & \multirow{10}{*}{} & \multicolumn{2}{c|}{auction\_id}& string & & ID phiên đấu giá\\\cline{1-1}\cline{4-8}
+    6  &  &  & \multicolumn{2}{c|}{selling\_user\_id}& string & & Người tạo phiên đấu giá\\\cline{1-1}\cline{4-8}
     7  &  &  & title &  & string & & Tiêu đề phiên đấu giá\\\cline{1-1}\cline{4-8}
     8  &  &  & start\_date &  & string & & Thời gian bắt đầu\\\cline{1-1}\cline{4-8}
     9  &  &  & end\_date &  & string & & Thời gian kết thúc\\\cline{1-1}\cline{4-8}
@@ -254,6 +267,8 @@ Chỉnh sửa tài khoản
     \end{supertabular}
 %\end{table}
 \\
+
+Chi tiết phiên đấu giá
 %\begin{table}[H]
     %\centering
     \tablehead{%
@@ -290,20 +305,22 @@ Chỉnh sửa tài khoản
     21  &  &  & starting\_price & string & & Giá khởi điểm\\\cline{1-1}\cline{4-7}
     22  &  &  & selling\_info & string & & Thông tin thêm\\\cline{1-1}\cline{4-7}
     23  &  &  & images & string & & Hình ảnh\\\cline{1-1}\cline{3-7}
-    14  & \multirow{9}{*}{} & selling\_user &  & object & & Người bán\\\cline{1-1}\cline{4-7}
-    15  &  &  & selling\_user\_id & string & & ID\\\cline{1-1}\cline{4-7}
-    16  &  &  & selling\_user\_name & string & & Tên\\\cline{1-1}\cline{4-7}
-    17  &  &  & selling\_user\_avatar & string & & Avatar\\\cline{1-1}\cline{3-7}
-    17  &  & max\_bid & &string& & Giá cao nhất\\\cline{1-1}\cline{3-7}
-    14  & \multirow{9}{*}{} & buying\_user &  & object & & Người mua\\\cline{1-1}\cline{4-7}
-    15  &  &  & buying\_user\_id & string & & ID\\\cline{1-1}\cline{4-7}
-    16  &  &  & buying\_user\_name & string & & Tên\\\cline{1-1}\cline{4-7}
-    17  &  &  & buying\_user\_phone & string & & Số điện thoại\\\cline{1-1}\cline{4-7}
-    17  &  &  & buying\_user\_address & string & & Địa chỉ\\\cline{1-1}\cline{3-7}
-    17  &  & like &  &string & & Yêu thích hay không\\\hline
+    24  & \multirow{9}{*}{} & selling\_user &  & object & & Người bán\\\cline{1-1}\cline{4-7}
+    25  &  &  & selling\_user\_id & string & & ID\\\cline{1-1}\cline{4-7}
+    26  &  &  & selling\_user\_name & string & & Tên\\\cline{1-1}\cline{4-7}
+    27  &  &  & selling\_user\_avatar & string & & Avatar\\\cline{1-1}\cline{3-7}
+    28  &  & max\_bid & &string& & Giá cao nhất\\\cline{1-1}\cline{3-7}
+    29  & \multirow{9}{*}{} & buying\_user &  & object & & Người mua\\\cline{1-1}\cline{4-7}
+    30  &  &  & buying\_user\_id & string & & ID\\\cline{1-1}\cline{4-7}
+    31  &  &  & buying\_user\_name & string & & Tên\\\cline{1-1}\cline{4-7}
+    32  &  &  & buying\_user\_phone & string & & Số điện thoại\\\cline{1-1}\cline{4-7}
+    33  &  &  & buying\_user\_address & string & & Địa chỉ\\\cline{1-1}\cline{3-7}
+    34  &  & like &  &string & & Yêu thích hay không\\\hline
     \end{supertabular}
 %\end{table}
 \\
+
+Tạo phiên đấu giá
 %\begin{table}[H]
     %\centering
     \tablehead{%
@@ -319,7 +336,7 @@ Chỉnh sửa tài khoản
     2  & \multicolumn{2}{c|}{category\_id} & string & 0 & ID loại sản phẩm\\\hline
     3  & \multicolumn{2}{c|}{start\_date} & date\_time & 0 & Thời gian bắt đầu\\\hline
     4  & \multicolumn{2}{c|}{end\_date} & date\_time & 0 & Thời gian kết thúc\\\hline
-    5  & title & & string & 0 & Tiêu đề\\\hline
+    5  & \multicolumn{2}{c|}{title} & string & 0 & Tiêu đề\\\hline
     \multicolumn{6}{|c|}{\bfseries Output}\\\hline
     1  & code& & int &  & Mã response\\\hline
     2  & message& & string &  & OK\\\hline
@@ -334,6 +351,8 @@ Chỉnh sửa tài khoản
     \end{supertabular}
 %\end{table}
 \\
+\newpage
+Chỉnh sửa phiên đấu giá chưa được duyệt
 %\begin{table}[H]
     %\centering
     \tablehead{%
@@ -345,10 +364,10 @@ Chỉnh sửa tài khoản
     \begin{supertabular}{| p{.05\textwidth} | p{.18\textwidth} | p{.18\textwidth} |p{.11\textwidth} | p{.05\textwidth}| p{.28\textwidth} |  } 
     \hline
     \multicolumn{6}{|c|}{\bfseries Input}\\\hline
-    1  & \multicolumn{2}{c|}{access\_token} & string & 0 & Token đăng nhập\\\hline
-    2  & \multicolumn{2}{c|}{category\_id} & string & 0 & Phân loại tìm kiếm\\\hline
-    3  & \multicolumn{2}{c|}{start\_date} & date\_time & 0 & Từ khòa tìm kiếm\\\hline
-    4  & \multicolumn{2}{c|}{end\_date} & date\_time & 0 & Từ khòa tìm kiếm\\\hline
+    1  & access\_token & & string & 0 & Token đăng nhập\\\hline
+    2  & category\_id & & string & 0 & Phân loại tìm kiếm\\\hline
+    3  & start\_date & & date\_time & 0 & Từ khòa tìm kiếm\\\hline
+    4  & end\_date & & date\_time & 0 & Từ khòa tìm kiếm\\\hline
     5  & title & & string & 0 & Từ khòa tìm kiếm\\\hline
     \multicolumn{6}{|c|}{\bfseries Output}\\\hline
     1  & code& & int &  & Mã response\\\hline
@@ -364,6 +383,8 @@ Chỉnh sửa tài khoản
     \end{supertabular}
 %\end{table}
 \\
+
+Xóa phiên đấu giá chưa được duyệt
 %\begin{table}[H]
     %\centering
     \tablehead{%
@@ -383,6 +404,8 @@ Chỉnh sửa tài khoản
     \end{supertabular}
 %\end{table}
 \\
+
+Tạo sản phẩm cho phiên đấu giá
 %\begin{table}[H]
     %\centering
     \tablehead{%
@@ -394,13 +417,13 @@ Chỉnh sửa tài khoản
     \begin{supertabular}{| p{.05\textwidth} | p{.18\textwidth} | p{.18\textwidth} |p{.11\textwidth} | p{.05\textwidth}| p{.28\textwidth} |  } 
     \hline
     \multicolumn{6}{|c|}{\bfseries Input}\\\hline
-    1  & \multicolumn{2}{c|}{access\_token} & string & 0 & Token đăng nhập\\\hline
-    2  & \multicolumn{2}{c|}{name} & string & 0 & Tên sản phẩm\\\hline
-    3  & \multicolumn{2}{c|}{starting\_price} & string & 0 & Giá khởi điểm\\\hline
-    4  & \multicolumn{2}{c|}{brand\_id} & string & 0 & ID thương hiệu\\\hline
-    5  & \multicolumn{2}{c|}{description} & text & 0 & Mô tả\\\hline
-    6  & \multicolumn{2}{c|}{series} & string & x & Số series\\\hline
-    7  & \multicolumn{2}{c|}{images} & array & x & Hình ảnh\\\hline
+    1  & access\_token & & string & 0 & Token đăng nhập\\\hline
+    2  & name & & string & 0 & Tên sản phẩm\\\hline
+    3  & starting\_price & & string & 0 & Giá khởi điểm\\\hline
+    4  & brand\_id & & string & 0 & ID thương hiệu\\\hline
+    5  & description & & text & 0 & Mô tả\\\hline
+    6  & series & & string & x & Số series\\\hline
+    7  & images & & array & x & Hình ảnh\\\hline
     \multicolumn{6}{|c|}{\bfseries Output}\\\hline
     1  & code& & int &  & Mã response\\\hline
     2  & message& & string &  & OK\\\hline
@@ -414,6 +437,8 @@ Chỉnh sửa tài khoản
     \end{supertabular}
 %\end{table}
 \\
+
+Chỉnh sửa sản phẩm của phiên đấu giá chưa được duyệt
 %\begin{table}[H]
     %\centering
     \tablehead{%
@@ -425,13 +450,13 @@ Chỉnh sửa tài khoản
     \begin{supertabular}{| p{.05\textwidth} | p{.18\textwidth} | p{.18\textwidth} |p{.11\textwidth} | p{.05\textwidth}| p{.28\textwidth} |  } 
     \hline
     \multicolumn{6}{|c|}{\bfseries Input}\\\hline
-    1  & \multicolumn{2}{c|}{access\_token} & string & 0 & Token đăng nhập\\\hline
-    2  & \multicolumn{2}{c|}{name} & string & 0 & Tên sản phẩm\\\hline
-    3  & \multicolumn{2}{c|}{starting\_price} & string & 0 & Giá khởi điểm\\\hline
-    4  & \multicolumn{2}{c|}{brand\_id} & string & 0 & ID thương hiệu\\\hline
-    5  & \multicolumn{2}{c|}{description} & text & 0 & Mô tả\\\hline
-    6  & \multicolumn{2}{c|}{series} & string & x & Số series\\\hline
-    7  & \multicolumn{2}{c|}{images} & array & x & Hình ảnh\\\hline
+    1  & access\_token & & string & 0 & Token đăng nhập\\\hline
+    2  & name & & string & 0 & Tên sản phẩm\\\hline
+    3  & starting\_price & & string & 0 & Giá khởi điểm\\\hline
+    4  & brand\_id & & string & 0 & ID thương hiệu\\\hline
+    5  & description & & text & 0 & Mô tả\\\hline
+    6  & series & & string & x & Số series\\\hline
+    7  & images & & array & x & Hình ảnh\\\hline
     \multicolumn{6}{|c|}{\bfseries Output}\\\hline
     1  & code& & int &  & Mã response\\\hline
     2  & message& & string &  & OK\\\hline
@@ -445,6 +470,8 @@ Chỉnh sửa tài khoản
     \end{supertabular}
 %\end{table}
 \\
+
+Bình luận
 %\begin{table}[H]
     %\centering
     \tablehead{%
@@ -470,6 +497,8 @@ Chỉnh sửa tài khoản
     \end{supertabular}
 %\end{table}
 \\
+
+Danh sách bình luận
 %\begin{table}[H]
     %\centering
     \tablehead{%
@@ -497,6 +526,8 @@ Chỉnh sửa tài khoản
     \end{supertabular}
 %\end{table}
 \\
+
+Xóa bình luận
 %\begin{table}[H]
     %\centering
     \tablehead{%
@@ -516,6 +547,8 @@ Chỉnh sửa tài khoản
     \end{supertabular}
 %\end{table}
 \\
+
+Trả giá
 %\begin{table}[H]
     %\centering
     \tablehead{%
@@ -541,6 +574,8 @@ Chỉnh sửa tài khoản
     \end{supertabular}
 %\end{table}
 \\
+
+Danh sách trả giá
 %\begin{table}[H]
     %\centering
     \tablehead{%
@@ -568,6 +603,8 @@ Chỉnh sửa tài khoản
     \end{supertabular}
 %\end{table}
 \\
+\newpage
+Cập nhật trạng thái giao hàng
 %\begin{table}[H]
     %\centering
     \tablehead{%
@@ -587,6 +624,8 @@ Chỉnh sửa tài khoản
     \end{supertabular}
 %\end{table}
 \\
+
+Đánh giá phiên đấu giá sau khi nhận được hàng
 %\begin{table}[H]
     %\centering
     \tablehead{%
@@ -614,6 +653,8 @@ Chỉnh sửa tài khoản
     \end{supertabular}
 %\end{table}
 \\
+
+Danh sách đánh giá
 %\begin{table}[H]
     %\centering
     \tablehead{%
@@ -643,6 +684,8 @@ Chỉnh sửa tài khoản
     \end{supertabular}
 %\end{table}
 \\
+
+Danh sách loại sản phẩm
 %\begin{table}[H]
     %\centering
     \tablehead{%
@@ -666,6 +709,8 @@ Chỉnh sửa tài khoản
     \end{supertabular}
 %\end{table}
 \\
+
+Danh sách thương hiệu
 %\begin{table}[H]
     %\centering
     \tablehead{%
@@ -687,6 +732,8 @@ Chỉnh sửa tài khoản
     \end{supertabular}
 %\end{table}
 \\
+
+Chấp nhận giá đưa ra cao nhất khi phiên đấu giá kết thúc
 %\begin{table}[H]
     %\centering
     \tablehead{%
@@ -728,6 +775,8 @@ Chỉnh sửa tài khoản
     \end{supertabular}
 %\end{table}
 \\
+\newpage
+Thích hay bỏ thích phiên đấu giá
 %\begin{table}[H]
     %\centering
     \tablehead{%
@@ -750,6 +799,8 @@ Chỉnh sửa tài khoản
     \end{supertabular}
 %\end{table}
 \\
+
+Danh sách phiên đấu giá yêu thích
 %\begin{table}[H]
     %\centering
     \tablehead{%
@@ -761,9 +812,9 @@ Chỉnh sửa tài khoản
     \begin{supertabular}{| p{.05\textwidth} | p{.10\textwidth} | p{.10\textwidth}| p{.12\textwidth}| p{.08\textwidth} |p{.12\textwidth} | p{.03\textwidth}| p{.20\textwidth} |  } 
     \hline
     \multicolumn{8}{|c|}{\bfseries Input}\\\hline
-    1  & \multicolumn{4}{c|}{access\_token} & string & x & Token đăng nhập\\\hline
-    2  & \multicolumn{4}{c|}{index} & string & 0 & Trang hiện tại\\\hline
-    3  & \multicolumn{4}{c|}{count} & string & 0 & Số phiên đấu giá yêu thích trên một trang\\\hline
+    1  & \multicolumn{4}{c|}{access\_token}& string & x & Token đăng nhập\\\hline
+    2  & index& & & & string & 0 & Trang hiện tại\\\hline
+    3  & count& & & & string & 0 & Số phiên đấu giá yêu thích trên một trang\\\hline
     \multicolumn{8}{|c|}{\bfseries Output}\\\hline
     1  & code& & & & int &  & Mã response\\\hline
     2  & message& & & & string &  & OK\\\hline
@@ -783,6 +834,8 @@ Chỉnh sửa tài khoản
     \end{supertabular}
 %\end{table}
 \\
+
+Danh sách tin tức
 %\begin{table}[H]
     %\centering
     \tablehead{%
@@ -812,6 +865,8 @@ Chỉnh sửa tài khoản
     \end{supertabular}
 %\end{table}
 \\
+
+Tin tức đã đọc
 %\begin{table}[H]
     %\centering
     \tablehead{%
@@ -838,6 +893,8 @@ Chỉnh sửa tài khoản
     \end{supertabular}
 %\end{table}
 \\
+
+Thông báo phiên đấu giá bị từ chối
 %\begin{table}[H]
     %\centering
     \tablehead{%
@@ -870,6 +927,8 @@ Chỉnh sửa tài khoản
     \end{supertabular}
 %\end{table}
 \\
+
+Thông báo đã được đọc hay chưa
 %\begin{table}[H]
     %\centering
     \tablehead{%
@@ -883,8 +942,8 @@ Chỉnh sửa tài khoản
     \multicolumn{7}{|c|}{\bfseries Input}\\\hline
     1  & \multicolumn{3}{c|}{access\_token}& string & 0 & Token đăng nhập\\\hline
     \multicolumn{7}{|c|}{\bfseries Output}\\\hline
-    1  & \multicolumn{3}{c|}{code}& int &  & Mã response\\\hline
-    2  & \multicolumn{3}{c|}{message}& string &  & \\\hline
+    1  & code & & & int &  & Mã response\\\hline
+    2  & \multicolumn{3}{c|}{message} & string &  & \\\hline
     3  & data & & & object &  & \\\cline{1-1}\cline{3-7}
     4  & \multirow{10}{*}{}    & is\_read & & array &  & Thông báo đã đọc hay chưa\\\cline{1-1}\cline{3-7}
     5 &      &  auctions    &  & string &  & Thông tin phiên đấu giá\\\cline{1-1}\cline{4-7}
@@ -907,6 +966,8 @@ Chỉnh sửa tài khoản
     \end{supertabular}
 %\end{table}
 \\
+
+Xóa thông báo
 %\begin{table}[H]
     %\centering
     \tablehead{%
@@ -926,6 +987,8 @@ Chỉnh sửa tài khoản
     \end{supertabular}
 %\end{table}
 \\
+
+Danh sách slide hiển thị phía giao diện người dùng
 %\begin{table}[H]
     %\centering
     \tablehead{%
@@ -947,6 +1010,8 @@ Chỉnh sửa tài khoản
     \end{supertabular}
 %\end{table}
 \\
+
+Tìm kiếm
 %\begin{table}[H]
     %\centering
     \tablehead{%
@@ -971,6 +1036,8 @@ Chỉnh sửa tài khoản
     \end{supertabular}
 %\end{table}
 \\
+
+Danh sách cuộc nói chuyện
 %\begin{table}[H]
     %\centering
     \tablehead{%
@@ -997,6 +1064,8 @@ Chỉnh sửa tài khoản
     \end{supertabular}
 %\end{table}
 \\
+
+Tạo cuộc nói chuyện mới
 %\begin{table}[H]
     %\centering
     \tablehead{%
@@ -1020,6 +1089,8 @@ Chỉnh sửa tài khoản
     \end{supertabular}
 %\end{table}
 \\
+
+Gửi tin nhắn
 %\begin{table}[H]
     %\centering
     \tablehead{%
@@ -1048,6 +1119,8 @@ Chỉnh sửa tài khoản
     \end{supertabular}
 %\end{table}
 \\
+
+Danh sách tin nhắn
 %\begin{table}[H]
     %\centering
     \tablehead{%
@@ -1061,7 +1134,7 @@ Chỉnh sửa tài khoản
     \multicolumn{7}{|c|}{\bfseries Input}\\\hline
     1  & \multicolumn{3}{c|}{access\_token}& string & 0 & Token đăng nhập\\\hline
     \multicolumn{7}{|c|}{\bfseries Output}\\\hline
-    1  & \multicolumn{3}{c|}{code}& int &  & Mã response\\\hline
+    1  & code & & & int &  & Mã response\\\hline
     2  & \multicolumn{3}{c|}{message}& string &  & \\\hline
     3  & data & & & array &  & \\\cline{1-1}\cline{3-7}
     4  & \multirow{10}{*}{}    & content & & string &  & Nội dung tin nhắn\\\cline{1-1}\cline{3-7}
@@ -1074,6 +1147,8 @@ Chỉnh sửa tài khoản
     \end{supertabular}
 %\end{table}
 \\
+
+Cập nhật trạng thái phiên đấu giá
 %\begin{table}[H]
     %\centering
     \tablehead{%
