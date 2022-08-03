@@ -49,7 +49,6 @@
 
 \usepackage{blindtext}
 
-
 % ===================================================
 
 \renewcommand{\bibname}{Danh_sach_tai_lieu_tham_khao} 
@@ -173,6 +172,7 @@
 % \newgeometry{top=2cm, bottom=2cm, left=2cm, right=2cm}
 \subfile{Bia} % Phần bìa
 % \restoregeometry
+\cleardoublepage
 
 % ===================================================
 \pagenumbering{roman}
@@ -262,7 +262,7 @@
 \fancyhf{}
 \fancyhead[RE, LO]{\leftmark}
 %\fancyhead[LE]{\rightmark}
-\fancyfoot[RE, LO]{\thepage}
+\fancyfoot[RO, LE]{\thepage}
 
 \chapter{GIỚI THIỆU ĐỀ TÀI}
 \label{chapter:Introduction}
@@ -274,12 +274,12 @@
 \label{chapter:Related_works}
 \subfile{Chuong/2_Khao_sat}
 
-
 \newpage
 %\pagestyle{fancy} % Áp dụng header và footer
 \chapter{CÔNG NGHỆ SỬ DỤNG}
 \label{chapter:Methodology}
 \subfile{Chuong/3_Cong_nghe}
+
 
 \newpage
 %\pagestyle{fancy} % Áp dụng header và footer
@@ -297,6 +297,7 @@
 \chapter{KẾT LUẬN VÀ HƯỚNG PHÁT TRIỂN} %Kết luận và hướng phát triển}
 \label{chapter:conclusion}
 \subfile{Chuong/6_Ket_luan}
+\cleardoublepage
 
 \newpage
 %\pagestyle{fancy} % Áp dụng header và footer
@@ -310,7 +311,6 @@
 \renewcommand\bibname{TÀI LIỆU THAM KHẢO}
 \printbibliography
 \phantomsection\addcontentsline{toc}{chapter}{TÀI LIỆU THAM KHẢO}
-
 \appendixpage
 \appendices
 \addappheadtotoc

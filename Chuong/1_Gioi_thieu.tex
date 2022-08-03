@@ -2,7 +2,7 @@
 \begin{document}
 \section{Đặt vấn đề}
 \label{section:1.1}
-Trong thời kỳ phát triển như ngày nay, nhu cầu mua bán, trao đổi hàng hóa của con người ngày càng tăng cao. Để thu hút được khách hàng thì các nhà kinh doanh không ngừng thay đổi cách thức, dịch vụ bán hàng. Nắm bắt được tâm lý của khách hàng, nhiều nhà kinh doanh ngoài việc bán các mặt hàng giá cố định thì đã tổ chức nhiều phiên đấu giá để kích thích sự cạnh tranh khi mua hàng của người tiêu dùng. Việc này tạo hiệu ứng rất tốt đối với người dùng, họ được tự mình định giá cho sản phẩm của mình, mua được sản phẩm với giá rẻ hơn ngoài thị trường. 
+Trong thời kỳ phát triển như ngày nay, nhu cầu mua bán, trao đổi hàng hóa của con người ngày càng tăng cao. Để thu hút được khách hàng thì các nhà kinh doanh không ngừng thay đổi cách thức, dịch vụ bán hàng. Nắm bắt được tâm lý của khách hàng, nhiều nhà kinh doanh ngoài việc bán các mặt hàng với giá cố định thì đã tổ chức nhiều phiên đấu giá để kích thích sự cạnh tranh khi mua hàng của người tiêu dùng. Việc này tạo hiệu ứng rất tốt đối với người dùng, họ được tự mình định giá cho sản phẩm của mình, mua được sản phẩm với giá rẻ hơn ngoài thị trường. 
 
 Tuy nhiên khi tổ chức các phiên đấu giá truyền thống thì phát sinh nhiều vấn đề như: thủ tục tổ chức cồng kềnh, hội trường, số lượng người tham gia, thời gian bị giới hạn. Bên cạnh đó sàn đấu giá truyền thống thường chỉ đấu giá những sản phẩm có giá trị lớn như nhà đất, đồ cổ quý hiếm….Vì vậy các sản phẩm có giá trị nhỏ hơn khó tiếp cận với khách hàng. Ngoài ra khi số lượng phiên đấu giá lớn dần thì việc quản lý trở nên rất khó khăn và mất thời gian.
 
@@ -10,7 +10,7 @@ Thêm vào đó thương mại điện tử đang ngày càng phát triển và 
 
 Tuy nhiên theo khảo sát của em về thị trường Việt Nam hiện nay, có rất ít website đấu giá trực tuyến và các phiên đấu giá thường hay giới hạn nhóm sản phẩm. Còn các sàn đấu giá nước ngoài thì không phù hợp với người Việt Nam, do vấn đề ngôn ngữ, vận chuyển, đổi trả hàng.
 
-Nhận thấy cả lợi ích và hạn chế của những sản phẩm hiện có. Em quyết định đặt mục tiêu cho đồ án là xây dựng một website đấu giá trực tuyến với mô hình C2C
+Nhận thấy cả lợi ích và hạn chế của những sản phẩm hiện có. Em quyết định đặt mục tiêu cho đồ án là xây dựng một website đấu giá trực tuyến với mô hình C2C (Customer To Customer - Người dùng tới người dùng).
 \section{Mục tiêu và phạm vi đề tài}
 \label{section:1.2}
 Trên thị trường hiện nay có rất nhiều ứng dụng, website tổ chức các phiên đấu giá trực tuyến ở cả Việt Nam và nước ngoài. Phổ biến nhất phải kể đến là ebay.com  ở thị trường nước ngoài, sohot.vn, lacvietauction.vn của Việt Nam.
@@ -19,7 +19,7 @@ Ebay.com thì phổ biến trên nhiều quốc gia, sản phẩm đa dạng, c�
 
 Do vậy ở đồ án tốt nghiệp này em muốn xây dựng một website cung cấp cho người dùng Việt Nam trải nghiệm tốt hơn, giao diện dễ sử dụng hơn. Bên cạnh đó để đáp ứng nhiều nhóm người dùng hơn thì phần mềm sẽ không giới hạn hay yêu cầu là chỉ bán một mặt hàng nhất định và không ràng buộc mặt hàng đó phải có giá trị thấp nhất là bao nhiêu. Bên cạnh đó để thuận tiện cho việc liên lạc trao đổi giữa các người dùng với nhau thì phần mềm cũng cung cấp cho người dùng ứng dụng chat realtime để liên lạc trao đổi giữa các bên khi cần. 
 
-Ngoài ra vì muốn hướng tới thêm một nhóm người Nhật Bản tại Việt Nam (hoặc nhóm có nhu cầu sử dụng tiếng Nhật) có nhu cầu bán lại đồ đã qua sử dụng với giá rẻ thì ứng dụng cung cấp việc chuyển đổi giữa tiếng Việt và tiếng Nhật cũng góp phần nâng cao trải nghiệm người dùng.
+Ngoài ra vì muốn hướng tới thêm một nhóm người Nhật Bản tại Việt Nam nên website cung cấp việc chuyển đổi giữa tiếng Việt và tiếng Nhật cũng góp phần nâng cao trải nghiệm người dùng hơn.
 
 \section{Định hướng giải pháp}
 \label{section:1.3}
@@ -31,7 +31,7 @@ Mô hình sử dụng cho đồ án là Mô hình Client  - Server, là loại m
 
 Bên cạnh đó đồ án lựa chọn kiến trúc MVC (Model-View-Controller). Một kiến trúc khá phổ biến và được sử dụng nhiều trên các ứng dụng web ngày nay. Kiến trúc MVC đơn giản, phân chia ứng dụng thành nhiều lớp dễ sử dụng, dễ triển khai và bảo trì. Phần hiển thị ở Client như là View, còn Server gắn với Model và Controller trong kiến trúc.
 
-Tóm lại, định hướng phát triển đề tài được triển khai như sau: Sử dụng Backend với Ngôn ngữ PHP framework Laravel, sử dụng thư viện ReactJs để xây dựng view hiển thị trên ứng dụng web, để có được chức năng chat realtime thì sử dụng thư viện Socket.IO, hệ quản trị cơ sở dữ liệu là MySQL.
+Tóm lại, định hướng phát triển đề tài được triển khai như sau: Phía Backend sử dụng Ngôn ngữ PHP framework Laravel, sử dụng thư viện ReactJs để xây dựng view hiển thị trên ứng dụng web, để có được chức năng chat realtime thì sử dụng thư viện Socket.IO, hệ quản trị cơ sở dữ liệu là MySQL.
 
 Về công nghệ sử dụng đồ án sẽ trình bày chi tiết hơn trong Chương 3.
 \section{Bố cục đồ án}
@@ -42,7 +42,7 @@ Chương 2 sẽ tập trung vào việc khảo sát hiện trạng thực tế h
 
 Tiếp theo, Chương 3 trình bày về công nghệ sử dụng trong suốt đồ án . Bao gồm các cơ sở lý thuyết cơ bản về công nghệ đó và lý giải tại sao công nghệ được lựa chọn cho đồ án. 
 
-Chương 4 sẽ trình bày chi tiết về quá trình thiết kế kiến trúc, giao diện, lớp, cơ sở dữ liệu; chương này còn nêu lên quá trình xây dựng, kết quả đạt được và quá trình kiểm thử phần mềm cho toàn bộ đồ án này. Việc lựa chọn kiến trúc MVC, hay sử dụng hệ quản trị cơ sở dữ liệu MySQL cũng sẽ được trình bày chi tiết tại chương này. Phần kiểm thử bao gồm cả kiểm thử tự động và kiểm thử hộp đen các chức năng quan trọng của đồ án. Cuối cùng là kế hoạch triển khai dự án trên thực tế thì có những vấn đề gì cần chú ý, các thông số liên quan.
+Chương 4 sẽ trình bày chi tiết về quá trình thiết kế kiến trúc, giao diện, lớp, cơ sở dữ liệu; chương này còn nêu lên quá trình xây dựng, kết quả đạt được và quá trình kiểm thử phần mềm cho toàn bộ đồ án này. Việc lựa chọn kiến trúc MVC, hay sử dụng hệ quản trị cơ sở dữ liệu MySQL cũng sẽ được trình bày chi tiết tại chương này. Phần kiểm thử sử dụng kỹ thuật kiểm thử hộp đen các chức năng quan trọng của đồ án. Cuối cùng là kế hoạch triển khai dự án trên thực tế thì có những vấn đề gì cần chú ý, các thông số liên quan.
 
 Những đóng góp của đồ án sẽ được trình bày trong chương 5. Ở chương này sẽ trình bày những đóng góp nổi bật của đồ án như (i) chat realtime giữa các người dùng trên website; (ii) tìm kiếm thông tin sản phẩm theo một số từ khóa nổi bật như tên phiên đấu giá, giá khởi điểm, thời gian bắt đầu, thời gian kết thúc; (iii) website cho phép người dùng đánh giá sản phẩm khi nhận được hàng; (iv) cung cấp hệ thống quản lý website dành cho Admin.
 

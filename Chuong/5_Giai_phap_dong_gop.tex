@@ -1,14 +1,14 @@
 \documentclass[../DoAn.tex]{subfiles}
 \begin{document}
-\section{Hệ thống quản lý rõ ràng, dễ sử dụng, minh bạch}
+\section{Hệ thống quản lý rõ ràng, minh bạch, dễ sử dụng.}
 \subsection{Đặt vấn đề}
-Hiện này nhu cầu của người tiêu dùng về việc mua và bán sản phẩm giá rẻ trên các sàn đấu giá trực tuyến ngày càng tăng cao. Đối với một website đấu giá trực tuyến thì khi dữ liệu sẽ càng ngày càng lớn, việc quản lý toàn bộ hệ thống sẽ gặp nhiều khó khăn hơn. Đặc biệt, quá trình phê duyệt các phiên đấu giá hay quản lý loại sản phẩm, thương hiệu, tin tức mất rất nhiều thời gian. Nếu Quản trị viên phải vào trong hệ thống Database để phê duyệt từng phiên đấu giá, thêm từng loại sản phẩm, thương hiệu, tin tức hay xuất dữ liệu là rất khó khăn, mất nhiều thời gian, không đảm bảo tính chính xác. Vì thế một hệ thống dành riêng cho Quản trị viên quản lý toàn bộ website là rất cần thiết. 
+Hiện này nhu cầu của người tiêu dùng về việc mua và bán sản phẩm giá rẻ trên các sàn đấu giá trực tuyến ngày càng tăng cao. Đối với một website đấu giá trực tuyến thì khi dữ liệu sẽ càng ngày càng lớn, việc quản lý toàn bộ hệ thống sẽ gặp nhiều khó khăn hơn. Đặc biệt, quá trình phê duyệt các phiên đấu giá hay quản lý loại sản phẩm, thương hiệu, tin tức mất rất nhiều thời gian. Nếu Quản trị viên phải vào trong hệ thống Database để phê duyệt từng phiên đấu giá, thêm từng loại sản phẩm, thương hiệu, tin tức hay xuất dữ liệu là rất khó khăn, mất nhiều thời gian và không đảm bảo tính chính xác. Vì thế một hệ thống dành riêng cho Quản trị viên quản lý toàn bộ website là rất cần thiết. 
 \subsection{Giải pháp và kết quả đạt được}
-Để giải quyết vấn đề trên thì hệ thống Quản trị viên phải tối ưu hóa việc thống kê được hiện tại hệ thống đang có những gì, các trạng thái phiên đấu giá phải được chuẩn hóa chung để dễ quản lý. Hệ thống quản lý này chỉ những tài khoản có quyền Quản trị viên mới có thể đăng nhập vào và thực hiện các thao tác như phê duyệt; thêm, sửa, xóa các loại sản phẩm, thương hiệu, tin tức, slide.
+Để giải quyết vấn đề trên thì hệ thống Quản trị viên phải tối ưu hóa việc thống kê được hiện tại hệ thống đang có những gì, các trạng thái phiên đấu giá phải được chuẩn hóa chung để dễ quản lý. Hệ thống quản lý này chỉ những tài khoản có quyền Quản trị viên mới có thể đăng nhập vào và thực hiện các thao tác như phê duyệt phiên đấu giá; thêm, sửa, xóa các loại sản phẩm, thương hiệu, tin tức, slide.
 
 Ngoài ra hệ thống cho phép Quản trị viên xuất dữ liệu ra các dạng file PDF, Excel, CSV nếu có nhu cầu in ấn thì cũng được thực hiện dễ dàng. 
 
-Dưới đây là một số hình ảnh đến hệ thống của Quản trị viên.
+Dưới đây là một số hình ảnh của hệ thống Quản trị viên.
 
 Hình ảnh danh sách các phiên đấu giá hiện có trên hệ thống
 \begin{figure}[H]
@@ -27,13 +27,13 @@ Quản trị viên phải nhập đầy đủ lý do khi muốn từ chối mộ
     \centering
     \includegraphics[width=0.75\linewidth,height=4.74cm]{Hinhve/adminreject.png}
 \end{figure}
-\section{Hệ thống hỗ trợ người dùng có thể tìm kiếm phiên đấu giá theo nhiều tiêu chí}
+\section{Hệ thống hỗ trợ người dùng có thể tìm kiếm phiên đấu giá theo nhiều tiêu chí.}
 \subsection{Đặt vấn đề}
 Khi hệ thống có nhiều dữ liệu hơn thì việc tìm kiếm một phiên đấu giá phù hợp với nhu cầu của người dùng là mất rất nhiều thời gian. Thay vì người dùng phải lướt từ trên xuống dưới, vào xem chi tiết từng phiên đấu giá để tìm kiếm phiên đấu giá phù hợp với mình thì chức năng tìm kiếm là một giải pháp hữu ích.
 \subsection{Giải pháp và kết quả đạt được}
 Để giải quyết vấn đề trên thì em có tham khảo một số sàn đấu giá phổ biến hiện nay, xem cách tìm kiếm phiên đấu giá của các website đó được tổ chức như thế nào. Bên cạnh đó để hệ thống phù hợp với người dùng nhất thì em có tham khảo một số ý kiến người dùng về việc khi tìm kiếm thì người ta quan tâm đến gì nhất, thì hầu hết đều tập trung vào tên phiên đấu giá, thời gian bắt đầu, thời gian kết thúc và giá khởi điểm. 
 
-Áp dụng vào website đấu giá trực tuyến, nhằm vừa giảm thiểu số dữ liệu mà hệ thống phải duyệt qua để tìm kiếm và trả về thông tin mà người dùng quan tâm thì em lựa chọn sẽ tìm kiếm phiên đấu giá theo từng trạng thái và nhóm từ khóa mà người quan tâm như giá khởi điểm, thời gian diễn ra, thời gian kết thúc, tên của phiên đấu giá. 
+Áp dụng vào website đấu giá trực tuyến, nhằm vừa giảm thiểu số dữ liệu mà hệ thống phải duyệt qua để tìm kiếm và trả về thông tin mà người dùng quan tâm thì em lựa chọn sẽ tìm kiếm phiên đấu giá theo từng trạng thái và nhóm từ khóa mà người dùng quan tâm như giá khởi điểm, thời gian diễn ra, thời gian kết thúc, tên của phiên đấu giá. 
 
 Dưới đây là một số hình ảnh, kết quả của việc tìm kiếm.
 
@@ -44,12 +44,13 @@ Hình ảnh kết quả tìm kiếm theo thời gian bắt đầu.
 \end{figure}
 Ở đây người dùng muốn tìm phiên đấu giá nào có thời gian bắt đầu vào ngày 14 tháng 6. Khi đó hệ thống sẽ hiển thị tên phiên đấu giá và thời gian liên quan mà người dùng tìm kiếm. Nếu kết quả tìm kiếm nhiều thì trên màn hình chỉ hiển thị tối đa 3 phiên đấu giá theo thứ tự thời gian tăng dần, người dùng có thể dùng chuột kéo xuống dưới để thấy các kết quả khác. 
 
-Hình ảnh tìm kiếm phiên đấu giá theo giá khởi điểm.
+Dưới đây là hình ảnh tìm kiếm phiên đấu giá theo giá khởi điểm.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\linewidth,height=6.44cm]{Hinhve/searchprice.png}
+    \includegraphics[width=0.75\linewidth,height=6.2cm]{Hinhve/searchprice.png}
 \end{figure}
 Hình trên tìm kiếm phiên đấu giá theo giá khởi điểm là 1000\$. Hệ thống trả về kết quả tìm được bao gồm tên phiên đấu giá và giá khởi điểm.
+
 Ngoài việc tìm kiếm trên toàn hệ thống theo từng nhóm từ khóa, thì ở các danh sách phiên đấu giá đã được chia theo nhóm trạng thái thì cũng có thanh tìm kiếm theo tên, theo thời gian bắt đầu, kết thúc của phiên đấu giá. 
 \begin{figure}[H]
     \centering
@@ -72,7 +73,7 @@ Hình ảnh nhắn tin trực tuyến giữa hai người dùng
 Hình ảnh nhắn tin trực tuyến với Quản trị viên
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\linewidth,height=5.32cm]{Hinhve/chatadmin.png}
+    \includegraphics[width=0.75\linewidth,height=5.4cm]{Hinhve/chatadmin.png}
 \end{figure}
 Để phân biệt giữa Quản trị viên và người dùng bình thường thì với tài khoản Quản trị viên sẽ có ngôi sao ở avatar.
 \section{Hệ thống cho phép người mua đánh giá khi nhận hàng}
@@ -86,10 +87,10 @@ Hình ảnh form đánh giá khi người mua xác nhận đã nhận được h
     \centering
     \includegraphics[width=0.75\linewidth,height=6.5cm]{Hinhve/rate.png}
 \end{figure}
-Hình ảnh đánh giá được công khai lên trên giao diện phiên đấu giá
+Hình ảnh danh sách đánh giá được công khai trên giao diện phiên đấu giá
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\linewidth,height=5.36cm]{Hinhve/listrate.png}
+    \includegraphics[width=0.75\linewidth,height=6cm]{Hinhve/listrate1.png}
 \end{figure}
 \newpage
 \end{document}

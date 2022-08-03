@@ -4,32 +4,33 @@
 \label{section:3.1}
 PHP viết tắt của cụm từ “PHP: Hypertext Preprocessor”, là ngôn ngữ lập trình mã nguồn mở phía server được thiết kế để xây dựng hệ thống web động\cite{PHP}.
 
-PHP có thể chạy trên nhiều hệ điều hành phổ biến hiện nay như là Windows, Linux, Unix, Mac OS X…., tương thích với hầu hết các máy chủ được sử dụng ngày nay như Apache, IIS…Hiện nay PHP có khá nhiều Framework được xây dựng từ PHP nên quá trình tạo một website được rút gọn khá nhiều. 
+PHP có thể chạy trên nhiều hệ điều hành phổ biến hiện nay như là Windows, Linux, Unix, Mac OS X…., tương thích với hầu hết các máy chủ được sử dụng ngày nay như Apache, IIS…Hiện nay có khá nhiều Framework được xây dựng từ PHP nên quá trình tạo một website được rút gọn khá nhiều. 
 
 Laravel là một PHP Framework mã nguồn mở miễn phí, được phát triển bởi Taylor Otwell, nhằm mục đích hỗ trợ cho các ứng dụng web theo cấu trúc MVC\cite{Laravel}. Laravel được hỗ trợ bởi một cộng đồng lớn nên quá trình phát triển dễ dàng hơn. 
 
-Một số đặc điểm quan trọng của Framework Laravel là: cung cấp mã CSRF để bảo toàn về bảo mật, có khuôn Blade hỗ trợ trong việc phát triển giao diện và cho phép sử dụng mã PHP trong blade.
+Một số đặc điểm quan trọng của Framework Laravel là: cung cấp mã CSRF (Cross Site
+Request Forgery - Kỹ thuật tấn công giả mạo) để bảo toàn về bảo mật, có khuôn Blade hỗ trợ trong việc phát triển giao diện và cho phép sử dụng mã PHP trong blade.
 
-Vì vậy đồ án lựa chọn ngôn ngữ PHP framework Laravel để xây dựng hệ thống quản lý bên admin và restful api cho phía client. 
+Vì vậy đồ án lựa chọn ngôn ngữ PHP framework Laravel để xây dựng hệ thống quản lý bên admin và RESTful API cho phía Client. 
 \section{ReactJS}
 \label{section:3.2}
 ReactJS là một thư viện JavaScript mã nguồn mở để xây dựng các thành phần giao diện người dùng có thể tái sử dụng\cite{ReactJS}. Trong mô hình MVC, ReactJS đóng vai trò như là View.
 
 Một số đặc điểm quan trọng của ReactJS: Một ứng dụng ReactJS được xây dựng bởi nhiều Component khác nhau, mỗi Component sẽ chịu một trách nhiệm riêng, đảm bảo được tính tái sử dụng, dễ bảo trì. Khi sử dụng ReactJS thì có thể phát triển một Single Page Application, giúp nâng cao trải nghiệm người dùng. ReactJS được phát hành bởi FaceBook Inc, tài liệu phát hành theo giấy phép Creative Common 4.0.
 
-ReactJS đơn giản và nhẹ, nó chỉ thao tác với lớp View trong mô hình MVC. ReactJS cũng có hiệu năng cao hơn và cũng không phức tạp bằng Angular hay Ember. ReactJS có hiệu năng tốt vì nó sử dụng DOM ảo, khi hệ thống tạo một Component mới, nó sẽ không thực sự ghi trực tiếp vào DOM trên trình duyệt mà ghi vào một DOM ảo, sau đó ReactJS sẽ sử dụng DOM ảo đó tạo ra DOM cho trình duyệt, đảm bảo được thời gian đọc/ghi là tối thiểu. Nên hiệu năng của ứng dụng được cải thiện đáng kể. 
+ReactJS đơn giản và nhẹ, nó chỉ thao tác với lớp View trong mô hình MVC. ReactJS cũng có hiệu năng cao hơn và cũng không phức tạp bằng Angular hay Ember. ReactJS có hiệu năng tốt vì nó sử dụng DOM (Document Object Model - Mô hình đối tượng tài liệu) ảo, khi hệ thống tạo một Component mới, nó sẽ không thực sự ghi trực tiếp vào DOM trên trình duyệt mà ghi vào một DOM ảo, sau đó ReactJS sẽ sử dụng DOM ảo đó tạo ra DOM cho trình duyệt, đảm bảo được thời gian đọc/ghi là tối thiểu\cite{ReactJSDOM}. Nên hiệu năng của ứng dụng được cải thiện đáng kể. 
 
 Thêm vào đó ReactJS có bộ công cụ dành cho dev được cài đặt dưới dạng tiện ích mở rộng của Chrome là React Developer Tools và Redux Developer. Các công cụ này hỗ trợ cho việc theo dõi hành động gửi đi, sự thay đổi của giao diện, việc kiểm tra lỗi hay bảo trì ứng dụng được dễ dàng hơn.
 \section{Bootstrap}
 \label{section:3.3}
 Bootstrap là một bộ công cụ giao diện người dùng mạnh mẽ, có nhiều tính năng. Bootstrap xây dựng mọi thứ từ những thành phần cơ bản đến sản phẩm phức tạp hơn chỉ trong thời gian ngắn\cite{Bootstrap}.
 
-Bootstrap cho phép người dùng thiết kế một website theo chuẩn nhất định, là một trong những framework được sử dụng nhiều khi xây dựng website. Bên cạnh đó Bootstrap được đánh giá dễ sử dụng, vì nó dựa trên HTML, CSS và Javascript. Bootstrap sử dụng Grid System nên mặc định hỗ trợ Responsive, vì được viết theo xu hướng Mobile First nên ưu tiên cho việc tương thích với giao diện trên thiết bị di động.
+Bootstrap cho phép người dùng thiết kế một website theo chuẩn nhất định, là một trong những framework được sử dụng nhiều khi xây dựng website. Bên cạnh đó Bootstrap được đánh giá dễ sử dụng, vì nó dựa trên HTML (HyperText Markup Language - Ngôn ngữ đánh dấu siêu văn bản), CSS (Cascading Style Sheets) và Javascript. Bootstrap sử dụng Grid System nên mặc định hỗ trợ Responsive, vì được viết theo xu hướng Mobile First nên ưu tiên cho việc tương thích với giao diện trên thiết bị di động.
 
 Ngoài ra thì Bootstrap cũng tương thích với hầu hết trình duyệt hiện nay như Chrome, Firefox, Internet Explorer, Safari, Opera…
 \section{MySQL}
 \label{section:3.4}
-MySQL là một hệ thống quản trị cơ sở dữ liệu mã nguồn mở hoạt động theo mô hình client-server. MySQL quản lý dữ liệu thông qua các cơ sở dữ liệu, mỗi cơ sở dữ liệu có thể có nhiều bảng có quan hệ với nhau. MySQL là hệ quản trị cơ sở dữ liệu rất được ưa chuộng trên toàn thế giới, có rất nhiều tổ chức lớn đang sử dụng như Facebook, Twitter, Booking.com và Verizon \cite{MySQL}.
+MySQL là một hệ quản trị cơ sở dữ liệu quan hệ mã nguồn mở (viết tắt là RDBMS: Relational Database Management System) do Oracle phát triển dựa trên ngôn ngữ truy vấn cấu trúc (SQL), hoạt động theo mô hình Client-Server. MySQL quản lý dữ liệu thông qua các cơ sở dữ liệu, mỗi cơ sở dữ liệu có thể có nhiều bảng có quan hệ với nhau. MySQL là hệ quản trị cơ sở dữ liệu rất được ưa chuộng trên toàn thế giới, có rất nhiều tổ chức lớn đang sử dụng như Facebook, Twitter, Booking.com và Verizon\cite{MySQL}.
 
 MySQL được biết đến là hệ quản trị cơ sở dữ liệu có tốc độ cao, ổn định, dễ sử dụng và hoạt động trên nhiều hệ điều hành, có độ bảo mật cao. Ngoài ra MySQL hỗ trợ rất nhiều chức năng truy vấn, có khả năng mở rộng mạnh mẽ và được thực hiện nhanh chóng.
 
@@ -38,7 +39,7 @@ Trong hệ thống website đấu giá trực tuyến, đồ án sử dụng MyS
 \label{section:3.5}
 Socket.IO là thư viện cho phép giao tiếp độ trễ thấp, hai chiều và dựa trên các sự kiện giữa client-server. Socket.IO được xây dựng dựa trên giao thức WebSocket và cung cấp các bảo đảm bổ sung dự phòng cho HTTP long-polling hoặc tự động kết nối lại \cite{Socket.IO}.
 
-Thư viện Socket.IO giữ một kết nối TCP mở với máy chủ, có thể dẫn đến việc tiêu hao nhiều pin cho người dùng. Socket.IO không được sử dụng trong dịch vụ nền cho các ứng dụng di động. 
+Thư viện Socket.IO giữ một kết nối TCP (Transmission Control Protocol - Giao thức điều khiển truyền vận) mở với máy chủ, có thể dẫn đến việc tiêu hao nhiều pin cho người dùng. Socket.IO không được sử dụng trong dịch vụ nền cho các ứng dụng di động\cite{Socket2}. 
 
 Socket.IO giúp các bên ở những địa chỉ khác nhau có thể kết nối được với nhau và việc truyền dữ liệu ngay lập tức thông qua server trung gian. Được sử dụng nhiều trong ứng dụng realtime như chat, game online…
 
